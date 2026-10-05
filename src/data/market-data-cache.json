@@ -1,0 +1,567 @@
+{
+  "generatedAt": "2026-10-05T12:00:00Z",
+  "dataSource": "FUNRAISE MCP 實價登錄",
+  "transactionYear": 114,
+  "cities": {
+    "台北市": {
+      "districts": {
+        "內湖區": {
+          "transactionCount": 2387,
+          "avgPrice": 29638941,
+          "medianPrice": 16482531,
+          "pricePerPing": 72.5,
+          "avgRent": 25000,
+          "rentPerPing": 1200,
+          "grossYield": 2.1
+        },
+        "大安區": {
+          "transactionCount": 2191,
+          "avgPrice": 33836247,
+          "medianPrice": 24261311,
+          "pricePerPing": 98.5,
+          "avgRent": 35000,
+          "rentPerPing": 1450,
+          "grossYield": 1.8
+        },
+        "中山區": {
+          "transactionCount": 2158,
+          "avgPrice": 26506711,
+          "medianPrice": 17113970,
+          "pricePerPing": 78.2,
+          "avgRent": 28000,
+          "rentPerPing": 1280,
+          "grossYield": 2.0
+        },
+        "文山區": {
+          "transactionCount": 1699,
+          "avgPrice": 15420651,
+          "medianPrice": 13200000,
+          "pricePerPing": 52.8,
+          "avgRent": 18000,
+          "rentPerPing": 950,
+          "grossYield": 2.2
+        },
+        "北投區": {
+          "transactionCount": 1691,
+          "avgPrice": 21774212,
+          "medianPrice": 14500000,
+          "pricePerPing": 58.6,
+          "avgRent": 20000,
+          "rentPerPing": 1050,
+          "grossYield": 2.2
+        },
+        "士林區": {
+          "transactionCount": 1665,
+          "avgPrice": 25126672,
+          "medianPrice": 15200000,
+          "pricePerPing": 62.4,
+          "avgRent": 22000,
+          "rentPerPing": 1100,
+          "grossYield": 2.1
+        },
+        "信義區": {
+          "transactionCount": 1534,
+          "avgPrice": 29229451,
+          "medianPrice": 17000000,
+          "pricePerPing": 95.8,
+          "avgRent": 32000,
+          "rentPerPing": 1380,
+          "grossYield": 1.7
+        },
+        "松山區": {
+          "transactionCount": 1330,
+          "avgPrice": 27071094,
+          "medianPrice": 21315000,
+          "pricePerPing": 82.5,
+          "avgRent": 30000,
+          "rentPerPing": 1320,
+          "grossYield": 1.9
+        },
+        "萬華區": {
+          "transactionCount": 1203,
+          "avgPrice": 14785451,
+          "medianPrice": 10580000,
+          "pricePerPing": 48.5,
+          "avgRent": 16000,
+          "rentPerPing": 880,
+          "grossYield": 2.2
+        },
+        "中正區": {
+          "transactionCount": 971,
+          "avgPrice": 31383880,
+          "medianPrice": 20180000,
+          "pricePerPing": 88.2,
+          "avgRent": 30000,
+          "rentPerPing": 1350,
+          "grossYield": 1.8
+        },
+        "南港區": {
+          "transactionCount": 890,
+          "avgPrice": 41746901,
+          "medianPrice": 15000000,
+          "pricePerPing": 68.5,
+          "avgRent": 24000,
+          "rentPerPing": 1180,
+          "grossYield": 2.1
+        },
+        "大同區": {
+          "transactionCount": 824,
+          "avgPrice": 25922066,
+          "medianPrice": 14100000,
+          "pricePerPing": 58.8,
+          "avgRent": 20000,
+          "rentPerPing": 1020,
+          "grossYield": 2.1
+        }
+      }
+    },
+    "新北市": {
+      "districts": {
+        "淡水區": {
+          "transactionCount": 3644,
+          "avgPrice": 12788756,
+          "medianPrice": 10330988,
+          "pricePerPing": 32.5,
+          "avgRent": 12000,
+          "rentPerPing": 680,
+          "grossYield": 2.5
+        },
+        "板橋區": {
+          "transactionCount": 3595,
+          "avgPrice": 16982156,
+          "medianPrice": 13353039,
+          "pricePerPing": 48.8,
+          "avgRent": 20000,
+          "rentPerPing": 920,
+          "grossYield": 2.3
+        },
+        "新莊區": {
+          "transactionCount": 3228,
+          "avgPrice": 20222796,
+          "medianPrice": 14346580,
+          "pricePerPing": 45.2,
+          "avgRent": 18000,
+          "rentPerPing": 850,
+          "grossYield": 2.3
+        },
+        "中和區": {
+          "transactionCount": 3056,
+          "avgPrice": 17618981,
+          "medianPrice": 13097493,
+          "pricePerPing": 46.5,
+          "avgRent": 18000,
+          "rentPerPing": 880,
+          "grossYield": 2.3
+        },
+        "三重區": {
+          "transactionCount": 2868,
+          "avgPrice": 18350169,
+          "medianPrice": 13149214,
+          "pricePerPing": 45.8,
+          "avgRent": 17000,
+          "rentPerPing": 850,
+          "grossYield": 2.2
+        },
+        "新店區": {
+          "transactionCount": 2554,
+          "avgPrice": 19318781,
+          "medianPrice": 13483367,
+          "pricePerPing": 48.2,
+          "avgRent": 18500,
+          "rentPerPing": 900,
+          "grossYield": 2.2
+        },
+        "汐止區": {
+          "transactionCount": 2366,
+          "avgPrice": 13807407,
+          "medianPrice": 10965655,
+          "pricePerPing": 38.5,
+          "avgRent": 15000,
+          "rentPerPing": 780,
+          "grossYield": 2.4
+        },
+        "土城區": {
+          "transactionCount": 1707,
+          "avgPrice": 17264326,
+          "medianPrice": 12800000,
+          "pricePerPing": 42.5,
+          "avgRent": 16000,
+          "rentPerPing": 820,
+          "grossYield": 2.3
+        },
+        "永和區": {
+          "transactionCount": 1433,
+          "avgPrice": 15300240,
+          "medianPrice": 13600000,
+          "pricePerPing": 52.8,
+          "avgRent": 18000,
+          "rentPerPing": 920,
+          "grossYield": 2.1
+        },
+        "林口區": {
+          "transactionCount": 1398,
+          "avgPrice": 28131835,
+          "medianPrice": 17000000,
+          "pricePerPing": 42.8,
+          "avgRent": 18000,
+          "rentPerPing": 850,
+          "grossYield": 2.4
+        },
+        "蘆洲區": {
+          "transactionCount": 1112,
+          "avgPrice": 16526913,
+          "medianPrice": 14000000,
+          "pricePerPing": 45.2,
+          "avgRent": 16500,
+          "rentPerPing": 850,
+          "grossYield": 2.3
+        },
+        "樹林區": {
+          "transactionCount": 1101,
+          "avgPrice": 15554855,
+          "medianPrice": 10800000,
+          "pricePerPing": 35.8,
+          "avgRent": 14000,
+          "rentPerPing": 750,
+          "grossYield": 2.5
+        },
+        "五股區": {
+          "transactionCount": 959,
+          "avgPrice": 15990381,
+          "medianPrice": 12600000,
+          "pricePerPing": 38.5,
+          "avgRent": 15000,
+          "rentPerPing": 780,
+          "grossYield": 2.4
+        },
+        "三峽區": {
+          "transactionCount": 877,
+          "avgPrice": 12377724,
+          "medianPrice": 7800000,
+          "pricePerPing": 28.5,
+          "avgRent": 12000,
+          "rentPerPing": 650,
+          "grossYield": 2.7
+        },
+        "鶯歌區": {
+          "transactionCount": 677,
+          "avgPrice": 12986335,
+          "medianPrice": 9400000,
+          "pricePerPing": 30.2,
+          "avgRent": 12500,
+          "rentPerPing": 680,
+          "grossYield": 2.7
+        },
+        "泰山區": {
+          "transactionCount": 571,
+          "avgPrice": 20545949,
+          "medianPrice": 12000000,
+          "pricePerPing": 38.8,
+          "avgRent": 15000,
+          "rentPerPing": 780,
+          "grossYield": 2.4
+        },
+        "八里區": {
+          "transactionCount": 511,
+          "avgPrice": 12096667,
+          "medianPrice": 8900000,
+          "pricePerPing": 28.5,
+          "avgRent": 11000,
+          "rentPerPing": 620,
+          "grossYield": 2.6
+        },
+        "深坑區": {
+          "transactionCount": 188,
+          "avgPrice": 13178980,
+          "medianPrice": 9100000,
+          "pricePerPing": 35.2,
+          "avgRent": 14000,
+          "rentPerPing": 720,
+          "grossYield": 2.5
+        }
+      }
+    },
+    "桃園市": {
+      "districts": {
+        "中壢區": {
+          "transactionCount": 4905,
+          "avgPrice": 19618048,
+          "medianPrice": 9729574,
+          "pricePerPing": 32.5,
+          "avgRent": 13000,
+          "rentPerPing": 680,
+          "grossYield": 2.5
+        },
+        "桃園區": {
+          "transactionCount": 4258,
+          "avgPrice": 15353852,
+          "medianPrice": 11194343,
+          "pricePerPing": 35.8,
+          "avgRent": 14000,
+          "rentPerPing": 720,
+          "grossYield": 2.4
+        },
+        "龜山區": {
+          "transactionCount": 2500,
+          "avgPrice": 12643594,
+          "medianPrice": 10458670,
+          "pricePerPing": 32.5,
+          "avgRent": 13000,
+          "rentPerPing": 680,
+          "grossYield": 2.5
+        },
+        "蘆竹區": {
+          "transactionCount": 2376,
+          "avgPrice": 25366315,
+          "medianPrice": 10228359,
+          "pricePerPing": 30.8,
+          "avgRent": 12500,
+          "rentPerPing": 650,
+          "grossYield": 2.5
+        },
+        "楊梅區": {
+          "transactionCount": 2140,
+          "avgPrice": 13176151,
+          "medianPrice": 6976828,
+          "pricePerPing": 25.5,
+          "avgRent": 10500,
+          "rentPerPing": 580,
+          "grossYield": 2.7
+        },
+        "平鎮區": {
+          "transactionCount": 2042,
+          "avgPrice": 10523111,
+          "medianPrice": 7376483,
+          "pricePerPing": 28.5,
+          "avgRent": 11500,
+          "rentPerPing": 620,
+          "grossYield": 2.6
+        },
+        "八德區": {
+          "transactionCount": 1716,
+          "avgPrice": 14523024,
+          "medianPrice": 11020000,
+          "pricePerPing": 32.8,
+          "avgRent": 13000,
+          "rentPerPing": 680,
+          "grossYield": 2.5
+        },
+        "大園區": {
+          "transactionCount": 1682,
+          "avgPrice": 16943933,
+          "medianPrice": 10000000,
+          "pricePerPing": 28.2,
+          "avgRent": 12000,
+          "rentPerPing": 650,
+          "grossYield": 2.8
+        },
+        "龍潭區": {
+          "transactionCount": 1498,
+          "avgPrice": 10989734,
+          "medianPrice": 5985000,
+          "pricePerPing": 22.5,
+          "avgRent": 10000,
+          "rentPerPing": 550,
+          "grossYield": 2.9
+        },
+        "大溪區": {
+          "transactionCount": 980,
+          "avgPrice": 12754868,
+          "medianPrice": 5000000,
+          "pricePerPing": 20.5,
+          "avgRent": 9500,
+          "rentPerPing": 520,
+          "grossYield": 3.0
+        }
+      }
+    },
+    "台中市": {
+      "districts": {
+        "北屯區": {
+          "transactionCount": 2966,
+          "avgPrice": 19915351,
+          "medianPrice": 13376597,
+          "pricePerPing": 35.8,
+          "avgRent": 15000,
+          "rentPerPing": 750,
+          "grossYield": 2.5
+        },
+        "西屯區": {
+          "transactionCount": 2463,
+          "avgPrice": 21136710,
+          "medianPrice": 11598987,
+          "pricePerPing": 38.5,
+          "avgRent": 16000,
+          "rentPerPing": 800,
+          "grossYield": 2.5
+        },
+        "南屯區": {
+          "transactionCount": 1810,
+          "avgPrice": 29797725,
+          "medianPrice": 15000000,
+          "pricePerPing": 42.8,
+          "avgRent": 18000,
+          "rentPerPing": 880,
+          "grossYield": 2.5
+        },
+        "北區": {
+          "transactionCount": 1598,
+          "avgPrice": 10427600,
+          "medianPrice": 7300000,
+          "pricePerPing": 32.5,
+          "avgRent": 13500,
+          "rentPerPing": 700,
+          "grossYield": 2.6
+        },
+        "太平區": {
+          "transactionCount": 1520,
+          "avgPrice": 12865622,
+          "medianPrice": 11300000,
+          "pricePerPing": 28.5,
+          "avgRent": 12000,
+          "rentPerPing": 650,
+          "grossYield": 2.7
+        },
+        "大里區": {
+          "transactionCount": 1187,
+          "avgPrice": 13961734,
+          "medianPrice": 9000000,
+          "pricePerPing": 28.8,
+          "avgRent": 12500,
+          "rentPerPing": 680,
+          "grossYield": 2.8
+        },
+        "南區": {
+          "transactionCount": 1168,
+          "avgPrice": 14263840,
+          "medianPrice": 9380000,
+          "pricePerPing": 30.2,
+          "avgRent": 13000,
+          "rentPerPing": 700,
+          "grossYield": 2.8
+        },
+        "西區": {
+          "transactionCount": 1135,
+          "avgPrice": 14556429,
+          "medianPrice": 8800000,
+          "pricePerPing": 38.5,
+          "avgRent": 15000,
+          "rentPerPing": 780,
+          "grossYield": 2.4
+        },
+        "豐原區": {
+          "transactionCount": 949,
+          "avgPrice": 13798270,
+          "medianPrice": 9000000,
+          "pricePerPing": 26.5,
+          "avgRent": 11500,
+          "rentPerPing": 620,
+          "grossYield": 2.8
+        },
+        "沙鹿區": {
+          "transactionCount": 873,
+          "avgPrice": 13675348,
+          "medianPrice": 10080000,
+          "pricePerPing": 28.2,
+          "avgRent": 12000,
+          "rentPerPing": 650,
+          "grossYield": 2.8
+        }
+      }
+    },
+    "高雄市": {
+      "districts": {
+        "三民區": {
+          "transactionCount": 2904,
+          "avgPrice": 14165763,
+          "medianPrice": 9072358,
+          "pricePerPing": 28.5,
+          "avgRent": 13000,
+          "rentPerPing": 680,
+          "grossYield": 2.9
+        },
+        "鳳山區": {
+          "transactionCount": 2425,
+          "avgPrice": 11944159,
+          "medianPrice": 8972855,
+          "pricePerPing": 26.8,
+          "avgRent": 12000,
+          "rentPerPing": 650,
+          "grossYield": 2.9
+        },
+        "楠梓區": {
+          "transactionCount": 1890,
+          "avgPrice": 13678370,
+          "medianPrice": 9300000,
+          "pricePerPing": 28.2,
+          "avgRent": 12500,
+          "rentPerPing": 670,
+          "grossYield": 2.9
+        },
+        "左營區": {
+          "transactionCount": 1596,
+          "avgPrice": 16563821,
+          "medianPrice": 11000000,
+          "pricePerPing": 32.5,
+          "avgRent": 14000,
+          "rentPerPing": 720,
+          "grossYield": 2.7
+        },
+        "苓雅區": {
+          "transactionCount": 1593,
+          "avgPrice": 14124607,
+          "medianPrice": 7300000,
+          "pricePerPing": 30.8,
+          "avgRent": 13500,
+          "rentPerPing": 700,
+          "grossYield": 2.7
+        },
+        "前鎮區": {
+          "transactionCount": 1427,
+          "avgPrice": 14428463,
+          "medianPrice": 9650000,
+          "pricePerPing": 30.2,
+          "avgRent": 13000,
+          "rentPerPing": 680,
+          "grossYield": 2.7
+        },
+        "小港區": {
+          "transactionCount": 1217,
+          "avgPrice": 11570949,
+          "medianPrice": 7780000,
+          "pricePerPing": 24.5,
+          "avgRent": 11000,
+          "rentPerPing": 600,
+          "grossYield": 2.9
+        },
+        "鼓山區": {
+          "transactionCount": 1196,
+          "avgPrice": 32034229,
+          "medianPrice": 11475000,
+          "pricePerPing": 35.8,
+          "avgRent": 15000,
+          "rentPerPing": 780,
+          "grossYield": 2.6
+        },
+        "仁武區": {
+          "transactionCount": 1055,
+          "avgPrice": 20231251,
+          "medianPrice": 12350000,
+          "pricePerPing": 28.5,
+          "avgRent": 13000,
+          "rentPerPing": 680,
+          "grossYield": 2.9
+        },
+        "岡山區": {
+          "transactionCount": 762,
+          "avgPrice": 15485014,
+          "medianPrice": 7780000,
+          "pricePerPing": 22.8,
+          "avgRent": 10500,
+          "rentPerPing": 580,
+          "grossYield": 3.0
+        }
+      }
+    }
+  }
+}

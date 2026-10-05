@@ -1,17 +1,12 @@
 /**
  * FUNRAISE MCP 客戶端
  * 封裝與 FUNRAISE MCP 的通訊，取得實價登錄和租金行情資料
+ * 
+ * 注意：在瀏覽器環境中，直接呼叫 MCP 會遇到 CORS 限制，
+ * 因此會透過 /api/mcp-proxy 進行代理。
  */
 
 import type { MarketData } from '../types';
-
-// MCP 請求格式（JSON-RPC 2.0）
-interface McpRequest {
-  jsonrpc: '2.0';
-  id: number;
-  method: string;
-  params: Record<string, unknown>;
-}
 
 // MCP 回應格式
 interface McpResponse<T = unknown> {
@@ -55,50 +50,107 @@ interface ActualRentalsResult {
 }
 
 /**
+ * 判斷是否在瀏覽器環境
+ */
+function isBrowser(): boolean {
+  return typeof window !== 'undefined';
+}
+
+/**
+ * 取得 API base URL
+ * - 開發環境：使用本地 dev-proxy server (port 3001)
+ * - 生產環境：使用 Vercel Edge Function proxy
+ */
+function getApiBaseUrl(): string {
+  if (isBrowser()) {
+    // 開發環境用本地 proxy，生產環境用相對路徑
+    if (import.meta.env.DEV) {
+      return 'http://localhost:3001/api/mcp-proxy';
+    }
+    return '/api/mcp-proxy';
+  }
+  // Server 環境：可以直接呼叫
+  return '';
+}
+
+/**
  * MCP 客戶端類別
  */
 export class McpClient {
-  private baseUrl: string;
-  private requestId: number = 0;
+  private configId: string;
 
   constructor(configId: string) {
-    this.baseUrl = `https://connector.mcp.funraise.ai/c/${configId}/mcp`;
+    this.configId = configId;
   }
 
   /**
-   * 發送 MCP 請求
+   * 發送 MCP 請求（透過 proxy）
    */
   private async sendRequest<T>(method: string, params: Record<string, unknown>): Promise<T> {
-    const request: McpRequest = {
-      jsonrpc: '2.0',
-      id: ++this.requestId,
-      method,
-      params,
-    };
+    const apiUrl = getApiBaseUrl();
+    
+    if (apiUrl) {
+      // 使用 proxy
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          configId: this.configId,
+          method,
+          params,
+        }),
+      });
 
-    const response = await fetch(this.baseUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(request),
-    });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
+      }
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      const data: McpResponse<T> = await response.json();
+
+      if (data.error) {
+        throw new Error(`MCP Error ${data.error.code}: ${data.error.message}`);
+      }
+
+      if (!data.result) {
+        throw new Error('Empty result from MCP');
+      }
+
+      return data.result;
+    } else {
+      // 直接呼叫（Server 環境）
+      const mcpUrl = `https://connector.mcp.funraise.ai/c/${this.configId}/mcp`;
+      const response = await fetch(mcpUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id: Date.now(),
+          method,
+          params,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data: McpResponse<T> = await response.json();
+
+      if (data.error) {
+        throw new Error(`MCP Error ${data.error.code}: ${data.error.message}`);
+      }
+
+      if (!data.result) {
+        throw new Error('Empty result from MCP');
+      }
+
+      return data.result;
     }
-
-    const data: McpResponse<T> = await response.json();
-
-    if (data.error) {
-      throw new Error(`MCP Error ${data.error.code}: ${data.error.message}`);
-    }
-
-    if (!data.result) {
-      throw new Error('Empty result from MCP');
-    }
-
-    return data.result;
   }
 
   /**
