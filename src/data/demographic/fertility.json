@@ -1,0 +1,78 @@
+{
+  "lastUpdated": "2026-06",
+  "source": "內政部戶政司人口統計、Wikipedia Demographics of Taiwan",
+  "sourceUrls": [
+    "https://en.wikipedia.org/wiki/Demographics_of_Taiwan",
+    "https://focustaiwan.tw/society/202603160014",
+    "https://en.sedaily.com/international/2026/04/08/taiwans-fertility-rate-falls-below-07-overtaking-korea-as"
+  ],
+  "notes": "總生育率 TFR = 每位女性平均生育子女數，替代水準約 2.1",
+  "data": [
+    {
+      "year": 2015,
+      "totalFertilityRate": 1.18,
+      "births": 213598,
+      "population": 23492074
+    },
+    {
+      "year": 2016,
+      "totalFertilityRate": 1.17,
+      "births": 208440,
+      "population": 23539816
+    },
+    {
+      "year": 2017,
+      "totalFertilityRate": 1.13,
+      "births": 193844,
+      "population": 23571227
+    },
+    {
+      "year": 2018,
+      "totalFertilityRate": 1.06,
+      "births": 181601,
+      "population": 23588932
+    },
+    {
+      "year": 2019,
+      "totalFertilityRate": 1.05,
+      "births": 177767,
+      "population": 23603121
+    },
+    {
+      "year": 2020,
+      "totalFertilityRate": 0.99,
+      "births": 165249,
+      "population": 23561236
+    },
+    {
+      "year": 2021,
+      "totalFertilityRate": 0.98,
+      "births": 153820,
+      "population": 23375314
+    },
+    {
+      "year": 2022,
+      "totalFertilityRate": 0.87,
+      "births": 138986,
+      "population": 23264640
+    },
+    {
+      "year": 2023,
+      "totalFertilityRate": 0.87,
+      "births": 135571,
+      "population": 23421615
+    },
+    {
+      "year": 2024,
+      "totalFertilityRate": 0.86,
+      "births": 132000,
+      "population": 23350000
+    },
+    {
+      "year": 2025,
+      "totalFertilityRate": 0.695,
+      "births": 115000,
+      "population": 23299132
+    }
+  ]
+}

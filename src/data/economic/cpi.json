@@ -1,0 +1,21 @@
+{
+  "lastUpdated": "2026-09",
+  "source": "主計總處消費者物價指數 (IMF World Economic Outlook)",
+  "sourceUrl": "https://ecodb.net/country/TW/imf_cpi.html",
+  "baseYear": 2021,
+  "notes": "基期 2021=100，數據來自 IMF 2026年4月推估",
+  "data": [
+    { "year": 2015, "cpi": 94.54, "yoyChange": -0.31 },
+    { "year": 2016, "cpi": 95.86, "yoyChange": 1.40 },
+    { "year": 2017, "cpi": 96.45, "yoyChange": 0.62 },
+    { "year": 2018, "cpi": 97.76, "yoyChange": 1.36 },
+    { "year": 2019, "cpi": 98.30, "yoyChange": 0.55 },
+    { "year": 2020, "cpi": 98.07, "yoyChange": -0.23 },
+    { "year": 2021, "cpi": 100.00, "yoyChange": 1.97 },
+    { "year": 2022, "cpi": 102.95, "yoyChange": 2.95 },
+    { "year": 2023, "cpi": 105.51, "yoyChange": 2.49 },
+    { "year": 2024, "cpi": 107.81, "yoyChange": 1.88 },
+    { "year": 2025, "cpi": 109.60, "yoyChange": 1.66 },
+    { "year": 2026, "cpi": 111.28, "yoyChange": 1.53 }
+  ]
+}

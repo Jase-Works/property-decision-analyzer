@@ -1,0 +1,96 @@
+{
+  "lastUpdated": "2026-09",
+  "source": "主計總處薪資與生產力統計、勞動部基本工資公告",
+  "sourceUrls": [
+    "https://countryeconomy.com/national-minimum-wage/taiwan",
+    "https://english.mol.gov.tw/21139/40790/87087/",
+    "https://slasify.com/en/blog/average-salary-in-taiwan"
+  ],
+  "notes": "平均月薪與中位數來自 DGBAS 統計，基本工資來自勞動部公告",
+  "data": [
+    {
+      "year": 2015,
+      "averageMonthly": 38716,
+      "medianMonthly": 30000,
+      "minWageMonthly": 20008,
+      "minWageHourly": 120
+    },
+    {
+      "year": 2016,
+      "averageMonthly": 39213,
+      "medianMonthly": 30600,
+      "minWageMonthly": 20008,
+      "minWageHourly": 126
+    },
+    {
+      "year": 2017,
+      "averageMonthly": 39953,
+      "medianMonthly": 31200,
+      "minWageMonthly": 21009,
+      "minWageHourly": 133
+    },
+    {
+      "year": 2018,
+      "averageMonthly": 40980,
+      "medianMonthly": 32000,
+      "minWageMonthly": 22000,
+      "minWageHourly": 140
+    },
+    {
+      "year": 2019,
+      "averageMonthly": 41883,
+      "medianMonthly": 33000,
+      "minWageMonthly": 23100,
+      "minWageHourly": 150
+    },
+    {
+      "year": 2020,
+      "averageMonthly": 42498,
+      "medianMonthly": 34000,
+      "minWageMonthly": 23800,
+      "minWageHourly": 158
+    },
+    {
+      "year": 2021,
+      "averageMonthly": 43211,
+      "medianMonthly": 34800,
+      "minWageMonthly": 24000,
+      "minWageHourly": 160
+    },
+    {
+      "year": 2022,
+      "averageMonthly": 44417,
+      "medianMonthly": 35600,
+      "minWageMonthly": 25250,
+      "minWageHourly": 168
+    },
+    {
+      "year": 2023,
+      "averageMonthly": 45496,
+      "medianMonthly": 36500,
+      "minWageMonthly": 26400,
+      "minWageHourly": 176
+    },
+    {
+      "year": 2024,
+      "averageMonthly": 46652,
+      "medianMonthly": 37400,
+      "minWageMonthly": 27400,
+      "minWageHourly": 183
+    },
+    {
+      "year": 2025,
+      "averageMonthly": 47884,
+      "medianMonthly": 38000,
+      "minWageMonthly": 28590,
+      "minWageHourly": 190
+    },
+    {
+      "year": 2026,
+      "averageMonthly": 48768,
+      "medianMonthly": 39348,
+      "minWageMonthly": 29500,
+      "minWageHourly": 196
+    }
+  ]
+}
