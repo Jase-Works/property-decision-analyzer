@@ -192,21 +192,26 @@ export function calculateSellNow(
   const taxRate = getCapitalGainsTaxRate(holdingYears);
   const capitalGainsTax = capitalGain > 0 ? capitalGain * taxRate : 0;
   
-  // 淨收入
+  // 淨收入（賣房後拿到的現金）
   const netProceeds = estimatedSellingPrice - transactionCosts - remainingLoan - capitalGainsTax;
+  
+  // 初始投入（頭期款）= 購入總價 - 貸款金額
+  const initialInvestment = property.purchasePrice - financial.loanAmount;
+  
+  // 純獲利 = 淨收入 - 初始投入
+  const pureProfit = netProceeds - initialInvestment;
   
   // 再投資報酬（將淨收入投入替代投資）
   const reinvestmentReturn = netProceeds * (
     Math.pow(1 + scenario.alternativeInvestmentReturn / 100, scenario.holdingPeriodYears) - 1
   );
   
-  // 總報酬
-  const totalReturn = netProceeds + reinvestmentReturn;
+  // 總報酬 = 純獲利 + 再投資報酬（不是 netProceeds + reinvestmentReturn）
+  const totalReturn = pureProfit + reinvestmentReturn;
   
-  // 年化報酬率
-  const initialInvestment = property.purchasePrice - financial.loanAmount;
+  // 年化報酬率（基於初始投入與最終報酬）
   const annualizedReturn = initialInvestment > 0
-    ? (Math.pow(totalReturn / initialInvestment, 1 / scenario.holdingPeriodYears) - 1) * 100
+    ? (Math.pow((initialInvestment + totalReturn) / initialInvestment, 1 / scenario.holdingPeriodYears) - 1) * 100
     : 0;
   
   return {
@@ -215,6 +220,8 @@ export function calculateSellNow(
     remainingLoan,
     capitalGainsTax,
     netProceeds,
+    initialInvestment,
+    pureProfit,
     reinvestmentReturn,
     totalReturn,
     annualizedReturn,
@@ -348,14 +355,16 @@ export function generateYearlyProjections(
 ): YearlyProjection[] {
   const projections: YearlyProjection[] = [];
   const sellNowBase = calculateSellNow(property, financial, { ...scenario, holdingPeriodYears: 0 }, marketData);
+  const initialInvestment = property.purchasePrice - financial.loanAmount;
   
   for (let year = 0; year <= scenario.holdingPeriodYears; year++) {
     const testScenario = { ...scenario, holdingPeriodYears: year };
     
     if (year === 0) {
+      // Year 0: 純獲利（不含再投資，因為還沒有時間再投資）
       projections.push({
         year: 0,
-        sellNowCumulative: sellNowBase.netProceeds,
+        sellNowCumulative: sellNowBase.pureProfit, // 用純獲利，不是淨收入
         holdAndRentCumulative: 0,
         rentalIncome: 0,
         holdingCosts: 0,
@@ -363,14 +372,17 @@ export function generateYearlyProjections(
       });
     } else {
       const holdResult = calculateHoldAndRent(property, financial, testScenario, marketData);
+      // 再投資報酬 = 淨收入 × 複利成長（把賣房所得再投資）
       const reinvestmentReturn = sellNowBase.netProceeds * (
         Math.pow(1 + scenario.alternativeInvestmentReturn / 100, year) - 1
       );
+      // 總報酬 = 純獲利 + 再投資報酬
+      const sellNowTotalReturn = sellNowBase.pureProfit + reinvestmentReturn;
       
       projections.push({
         year,
-        sellNowCumulative: sellNowBase.netProceeds + reinvestmentReturn,
-        holdAndRentCumulative: holdResult.totalReturn + (property.purchasePrice - financial.loanAmount),
+        sellNowCumulative: sellNowTotalReturn, // 用修正後的總報酬
+        holdAndRentCumulative: holdResult.totalReturn + initialInvestment,
         rentalIncome: holdResult.totalRentalIncome / year,
         holdingCosts: holdResult.totalHoldingCosts / year,
         propertyValue: holdResult.futureSellingPrice,

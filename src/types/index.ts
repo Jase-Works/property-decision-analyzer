@@ -93,9 +93,11 @@ export interface SellNowResult {
   transactionCosts: number;          // 交易成本（萬元）：仲介費、代書費等
   remainingLoan: number;             // 剩餘貸款（萬元）
   capitalGainsTax: number;           // 房地合一稅（萬元）
-  netProceeds: number;               // 淨收入（萬元）
+  netProceeds: number;               // 淨收入（萬元）= 賣房後拿到的現金
+  initialInvestment: number;         // 初始投入（萬元）= 購入總價 - 貸款金額（即頭期款）
+  pureProfit: number;                // 純獲利（萬元）= 淨收入 - 初始投入
   reinvestmentReturn: number;        // 再投資報酬（萬元）
-  totalReturn: number;               // 總報酬（萬元）
+  totalReturn: number;               // 總報酬（萬元）= 純獲利 + 再投資報酬
   annualizedReturn: number;          // 年化報酬率（%）
 }
 
