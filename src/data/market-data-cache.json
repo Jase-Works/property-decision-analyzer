@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T14:30:04.073Z",
+  "generatedAt": "2026-10-05T15:52:24.674Z",
   "dataSource": "FUNRAISE MCP 實價登錄",
   "transactionYear": 114,
   "cities": {
@@ -12,7 +12,135 @@
           "pricePerPing": 72.5,
           "avgRent": 25000,
           "rentPerPing": 1200,
-          "grossYield": 2.1
+          "grossYield": 2.1,
+          "streets": {
+            "康寧路一段": {
+              "avgPrice": 61.5,
+              "medianPrice": 60.1,
+              "minPrice": 40.8,
+              "maxPrice": 83.4,
+              "count": 3
+            },
+            "行善路": {
+              "avgPrice": 55.9,
+              "medianPrice": 60,
+              "minPrice": 25.4,
+              "maxPrice": 82.4,
+              "count": 3
+            },
+            "新明路": {
+              "avgPrice": 178,
+              "medianPrice": 79.9,
+              "minPrice": 49.6,
+              "maxPrice": 820.2,
+              "count": 7
+            },
+            "南京東路六段": {
+              "avgPrice": 70.6,
+              "medianPrice": 76.3,
+              "minPrice": 35.6,
+              "maxPrice": 84.1,
+              "count": 6
+            },
+            "民權東路六段": {
+              "avgPrice": 84.2,
+              "medianPrice": 79.9,
+              "minPrice": 72.7,
+              "maxPrice": 113.9,
+              "count": 9
+            },
+            "內湖路二段": {
+              "avgPrice": 88.2,
+              "medianPrice": 90.3,
+              "minPrice": 40.2,
+              "maxPrice": 145.3,
+              "count": 8
+            },
+            "內湖路一段": {
+              "avgPrice": 55.2,
+              "medianPrice": 59.7,
+              "minPrice": 27.3,
+              "maxPrice": 79.8,
+              "count": 13
+            },
+            "安康路": {
+              "avgPrice": 76.7,
+              "medianPrice": 81.3,
+              "minPrice": 60.4,
+              "maxPrice": 88.3,
+              "count": 3
+            },
+            "大湖山莊街": {
+              "avgPrice": 65.4,
+              "medianPrice": 64.8,
+              "minPrice": 53.3,
+              "maxPrice": 81,
+              "count": 7
+            },
+            "成功路四段": {
+              "avgPrice": 82.3,
+              "medianPrice": 76.9,
+              "minPrice": 71.1,
+              "maxPrice": 104.3,
+              "count": 4
+            },
+            "康寧路三段": {
+              "avgPrice": 67.6,
+              "medianPrice": 73.5,
+              "minPrice": 31,
+              "maxPrice": 92.8,
+              "count": 7
+            },
+            "康樂街": {
+              "avgPrice": 64.6,
+              "medianPrice": 65.8,
+              "minPrice": 46,
+              "maxPrice": 83.4,
+              "count": 6
+            },
+            "陽光街": {
+              "avgPrice": 53.6,
+              "medianPrice": 48.9,
+              "minPrice": 37.3,
+              "maxPrice": 80.8,
+              "count": 5
+            },
+            "金龍路": {
+              "avgPrice": 82.3,
+              "medianPrice": 82.8,
+              "minPrice": 75.5,
+              "maxPrice": 88.4,
+              "count": 4
+            },
+            "成功路五段": {
+              "avgPrice": 81,
+              "medianPrice": 85.3,
+              "minPrice": 68.4,
+              "maxPrice": 89.4,
+              "count": 3
+            },
+            "星雲街": {
+              "avgPrice": 87.4,
+              "medianPrice": 92.2,
+              "minPrice": 64.3,
+              "maxPrice": 97.9,
+              "count": 6
+            },
+            "內湖路三段": {
+              "avgPrice": 57.4,
+              "medianPrice": 55.8,
+              "minPrice": 46.9,
+              "maxPrice": 71.4,
+              "count": 4
+            },
+            "環山路二段": {
+              "avgPrice": 64.2,
+              "medianPrice": 59.8,
+              "minPrice": 52.9,
+              "maxPrice": 79.7,
+              "count": 3
+            }
+          }
         },
         "大安區": {
           "transactionCount": 2191,
@@ -21,7 +149,128 @@
           "pricePerPing": 98.5,
           "avgRent": 35000,
           "rentPerPing": 1450,
-          "grossYield": 1.8
+          "grossYield": 1.8,
+          "streets": {
+            "仁愛路四段": {
+              "avgPrice": 92,
+              "medianPrice": 77.8,
+              "minPrice": 77.8,
+              "maxPrice": 120.4,
+              "count": 3
+            },
+            "敦化南路一段": {
+              "avgPrice": 159.8,
+              "medianPrice": 144,
+              "minPrice": 90.1,
+              "maxPrice": 247.3,
+              "count": 11
+            },
+            "信義路四段": {
+              "avgPrice": 106.8,
+              "medianPrice": 111.8,
+              "minPrice": 42,
+              "maxPrice": 162.6,
+              "count": 10
+            },
+            "忠孝東路四段": {
+              "avgPrice": 110.1,
+              "medianPrice": 106.8,
+              "minPrice": 93.2,
+              "maxPrice": 141.7,
+              "count": 8
+            },
+            "復興南路二段": {
+              "avgPrice": 103,
+              "medianPrice": 90.8,
+              "minPrice": 59.1,
+              "maxPrice": 178.4,
+              "count": 9
+            },
+            "和平東路二段": {
+              "avgPrice": 103,
+              "medianPrice": 103.3,
+              "minPrice": 87.4,
+              "maxPrice": 113.7,
+              "count": 5
+            },
+            "瑞安街": {
+              "avgPrice": 139.9,
+              "medianPrice": 116.9,
+              "minPrice": 111.8,
+              "maxPrice": 191.1,
+              "count": 3
+            },
+            "復興南路一段": {
+              "avgPrice": 106.3,
+              "medianPrice": 99.7,
+              "minPrice": 56.2,
+              "maxPrice": 175.3,
+              "count": 8
+            },
+            "安東街": {
+              "avgPrice": 107.9,
+              "medianPrice": 102.4,
+              "minPrice": 63.2,
+              "maxPrice": 163.9,
+              "count": 4
+            },
+            "光復南路": {
+              "avgPrice": 73.3,
+              "medianPrice": 77.2,
+              "minPrice": 38.7,
+              "maxPrice": 99.9,
+              "count": 4
+            },
+            "和平東路三段": {
+              "avgPrice": 95.5,
+              "medianPrice": 90.7,
+              "minPrice": 81.7,
+              "maxPrice": 114,
+              "count": 3
+            },
+            "敦化南路二段": {
+              "avgPrice": 80.7,
+              "medianPrice": 82.2,
+              "minPrice": 37.8,
+              "maxPrice": 116.9,
+              "count": 5
+            },
+            "溫州街": {
+              "avgPrice": 90.5,
+              "medianPrice": 87.6,
+              "minPrice": 79.7,
+              "maxPrice": 104.2,
+              "count": 3
+            },
+            "忠孝東路三段": {
+              "avgPrice": 166.8,
+              "medianPrice": 160,
+              "minPrice": 104.1,
+              "maxPrice": 236,
+              "count": 7
+            },
+            "永康街": {
+              "avgPrice": 113.4,
+              "medianPrice": 110.3,
+              "minPrice": 91,
+              "maxPrice": 132.1,
+              "count": 5
+            },
+            "信義路三段": {
+              "avgPrice": 115.3,
+              "medianPrice": 132.4,
+              "minPrice": 56,
+              "maxPrice": 157.5,
+              "count": 3
+            },
+            "延吉街": {
+              "avgPrice": 77.5,
+              "medianPrice": 88.5,
+              "minPrice": 54.1,
+              "maxPrice": 89.9,
+              "count": 3
+            }
+          }
         },
         "中山區": {
           "transactionCount": 2158,
@@ -30,7 +279,142 @@
           "pricePerPing": 78.2,
           "avgRent": 28000,
           "rentPerPing": 1280,
-          "grossYield": 2
+          "grossYield": 2,
+          "streets": {
+            "農安街": {
+              "avgPrice": 71.5,
+              "medianPrice": 70.2,
+              "minPrice": 55.9,
+              "maxPrice": 93.8,
+              "count": 6
+            },
+            "新生北路二段": {
+              "avgPrice": 73.6,
+              "medianPrice": 80.4,
+              "minPrice": 32.9,
+              "maxPrice": 90.1,
+              "count": 9
+            },
+            "北安路": {
+              "avgPrice": 83.1,
+              "medianPrice": 80.4,
+              "minPrice": 61.3,
+              "maxPrice": 110.1,
+              "count": 4
+            },
+            "德惠街": {
+              "avgPrice": 88.3,
+              "medianPrice": 83.5,
+              "minPrice": 49.8,
+              "maxPrice": 124,
+              "count": 5
+            },
+            "長安東路二段": {
+              "avgPrice": 69.4,
+              "medianPrice": 69.8,
+              "minPrice": 53.5,
+              "maxPrice": 84.9,
+              "count": 3
+            },
+            "松江路": {
+              "avgPrice": 94.1,
+              "medianPrice": 96.3,
+              "minPrice": 60.5,
+              "maxPrice": 133.1,
+              "count": 11
+            },
+            "敬業三路": {
+              "avgPrice": 71.5,
+              "medianPrice": 72.1,
+              "minPrice": 63.8,
+              "maxPrice": 78.2,
+              "count": 4
+            },
+            "中山北路二段": {
+              "avgPrice": 75.8,
+              "medianPrice": 76.2,
+              "minPrice": 36.8,
+              "maxPrice": 112.1,
+              "count": 6
+            },
+            "敬業二路": {
+              "avgPrice": 133.3,
+              "medianPrice": 133,
+              "minPrice": 132.8,
+              "maxPrice": 134.1,
+              "count": 3
+            },
+            "林森北路": {
+              "avgPrice": 86.2,
+              "medianPrice": 82.6,
+              "minPrice": 55.1,
+              "maxPrice": 151.2,
+              "count": 20
+            },
+            "長春路": {
+              "avgPrice": 85.7,
+              "medianPrice": 84.6,
+              "minPrice": 72.3,
+              "maxPrice": 105.5,
+              "count": 7
+            },
+            "新生北路三段": {
+              "avgPrice": 77,
+              "medianPrice": 72.2,
+              "minPrice": 48.5,
+              "maxPrice": 108.3,
+              "count": 7
+            },
+            "復興北路": {
+              "avgPrice": 97,
+              "medianPrice": 96,
+              "minPrice": 82.2,
+              "maxPrice": 108.4,
+              "count": 5
+            },
+            "南京東路二段": {
+              "avgPrice": 98.7,
+              "medianPrice": 95,
+              "minPrice": 54.3,
+              "maxPrice": 146.8,
+              "count": 3
+            },
+            "建國北路二段": {
+              "avgPrice": 81.7,
+              "medianPrice": 75.6,
+              "minPrice": 65.4,
+              "maxPrice": 104.2,
+              "count": 3
+            },
+            "民生東路一段": {
+              "avgPrice": 77.1,
+              "medianPrice": 83.2,
+              "minPrice": 56.8,
+              "maxPrice": 91.3,
+              "count": 3
+            },
+            "明水路": {
+              "avgPrice": 112.6,
+              "medianPrice": 101,
+              "minPrice": 84.6,
+              "maxPrice": 152.8,
+              "count": 7
+            },
+            "吉林路": {
+              "avgPrice": 91,
+              "medianPrice": 80,
+              "minPrice": 56.4,
+              "maxPrice": 136.7,
+              "count": 3
+            },
+            "撫順街": {
+              "avgPrice": 89.7,
+              "medianPrice": 90.1,
+              "minPrice": 80.1,
+              "maxPrice": 99,
+              "count": 3
+            }
+          }
         },
         "文山區": {
           "transactionCount": 1699,
@@ -57,7 +441,114 @@
           "pricePerPing": 62.4,
           "avgRent": 22000,
           "rentPerPing": 1100,
-          "grossYield": 2.1
+          "grossYield": 2.1,
+          "streets": {
+            "中山北路七段": {
+              "avgPrice": 61.5,
+              "medianPrice": 59.6,
+              "minPrice": 47.7,
+              "maxPrice": 84.6,
+              "count": 6
+            },
+            "中山北路六段": {
+              "avgPrice": 80.4,
+              "medianPrice": 75.8,
+              "minPrice": 43.8,
+              "maxPrice": 126.8,
+              "count": 6
+            },
+            "天母西路": {
+              "avgPrice": 73,
+              "medianPrice": 60.2,
+              "minPrice": 34,
+              "maxPrice": 124.6,
+              "count": 3
+            },
+            "社中街": {
+              "avgPrice": 56.6,
+              "medianPrice": 64.8,
+              "minPrice": 26.8,
+              "maxPrice": 69.7,
+              "count": 4
+            },
+            "德行東路": {
+              "avgPrice": 63.4,
+              "medianPrice": 67.3,
+              "minPrice": 53.3,
+              "maxPrice": 69.6,
+              "count": 3
+            },
+            "天母北路": {
+              "avgPrice": 87.7,
+              "medianPrice": 90.6,
+              "minPrice": 66.2,
+              "maxPrice": 103.6,
+              "count": 4
+            },
+            "承德路四段": {
+              "avgPrice": 61.4,
+              "medianPrice": 61.4,
+              "minPrice": 53.4,
+              "maxPrice": 69.5,
+              "count": 3
+            },
+            "文林路": {
+              "avgPrice": 61.7,
+              "medianPrice": 72.6,
+              "minPrice": 21.2,
+              "maxPrice": 93.3,
+              "count": 5
+            },
+            "後港街": {
+              "avgPrice": 64.8,
+              "medianPrice": 71.1,
+              "minPrice": 44,
+              "maxPrice": 79.3,
+              "count": 3
+            },
+            "社子街": {
+              "avgPrice": 39.7,
+              "medianPrice": 45.4,
+              "minPrice": 21.6,
+              "maxPrice": 52,
+              "count": 3
+            },
+            "中山北路五段": {
+              "avgPrice": 76.1,
+              "medianPrice": 85.7,
+              "minPrice": 52.4,
+              "maxPrice": 90.1,
+              "count": 3
+            },
+            "重慶北路四段": {
+              "avgPrice": 56.4,
+              "medianPrice": 71.5,
+              "minPrice": 22.5,
+              "maxPrice": 75.1,
+              "count": 3
+            },
+            "天母東路": {
+              "avgPrice": 82.4,
+              "medianPrice": 75.8,
+              "minPrice": 70.8,
+              "maxPrice": 107.4,
+              "count": 4
+            },
+            "中正路": {
+              "avgPrice": 59.4,
+              "medianPrice": 53.9,
+              "minPrice": 47.9,
+              "maxPrice": 76.4,
+              "count": 3
+            },
+            "德行西路": {
+              "avgPrice": 74.3,
+              "medianPrice": 61.2,
+              "minPrice": 50.3,
+              "maxPrice": 111.3,
+              "count": 3
+            }
+          }
         },
         "信義區": {
           "transactionCount": 1534,
@@ -66,7 +557,128 @@
           "pricePerPing": 95.8,
           "avgRent": 32000,
           "rentPerPing": 1380,
-          "grossYield": 1.7
+          "grossYield": 1.7,
+          "streets": {
+            "吳興街": {
+              "avgPrice": 67.7,
+              "medianPrice": 66.5,
+              "minPrice": 28,
+              "maxPrice": 145.6,
+              "count": 19
+            },
+            "信義路四段": {
+              "avgPrice": 142.4,
+              "medianPrice": 156.1,
+              "minPrice": 75,
+              "maxPrice": 182.3,
+              "count": 4
+            },
+            "基隆路一段": {
+              "avgPrice": 86,
+              "medianPrice": 86.9,
+              "minPrice": 40,
+              "maxPrice": 137.6,
+              "count": 13
+            },
+            "松信路": {
+              "avgPrice": 72.3,
+              "medianPrice": 57,
+              "minPrice": 50.4,
+              "maxPrice": 109.4,
+              "count": 3
+            },
+            "虎林街": {
+              "avgPrice": 84.3,
+              "medianPrice": 74.7,
+              "minPrice": 63.9,
+              "maxPrice": 111.4,
+              "count": 10
+            },
+            "永吉路": {
+              "avgPrice": 85.2,
+              "medianPrice": 84.2,
+              "minPrice": 33.2,
+              "maxPrice": 118.8,
+              "count": 16
+            },
+            "松仁路": {
+              "avgPrice": 79,
+              "medianPrice": 83.1,
+              "minPrice": 63.1,
+              "maxPrice": 90.3,
+              "count": 6
+            },
+            "松德路": {
+              "avgPrice": 104.8,
+              "medianPrice": 93.4,
+              "minPrice": 72.9,
+              "maxPrice": 150.9,
+              "count": 9
+            },
+            "信義路五段": {
+              "avgPrice": 112.3,
+              "medianPrice": 108.7,
+              "minPrice": 78.8,
+              "maxPrice": 158.2,
+              "count": 5
+            },
+            "林口街": {
+              "avgPrice": 74.4,
+              "medianPrice": 84.8,
+              "minPrice": 41.9,
+              "maxPrice": 86.3,
+              "count": 4
+            },
+            "忠孝東路五段": {
+              "avgPrice": 131.3,
+              "medianPrice": 131.6,
+              "minPrice": 20.2,
+              "maxPrice": 225,
+              "count": 13
+            },
+            "光復南路": {
+              "avgPrice": 102.4,
+              "medianPrice": 107.4,
+              "minPrice": 90.1,
+              "maxPrice": 111,
+              "count": 5
+            },
+            "松勇路": {
+              "avgPrice": 165.5,
+              "medianPrice": 183.9,
+              "minPrice": 127.5,
+              "maxPrice": 185,
+              "count": 3
+            },
+            "松山路": {
+              "avgPrice": 89.9,
+              "medianPrice": 84.8,
+              "minPrice": 74.1,
+              "maxPrice": 115.9,
+              "count": 4
+            },
+            "信義路六段": {
+              "avgPrice": 69.2,
+              "medianPrice": 66.3,
+              "minPrice": 61.8,
+              "maxPrice": 82.3,
+              "count": 4
+            },
+            "和平東路三段": {
+              "avgPrice": 83.4,
+              "medianPrice": 101,
+              "minPrice": 21.8,
+              "maxPrice": 109.9,
+              "count": 4
+            },
+            "基隆路二段": {
+              "avgPrice": 96.7,
+              "medianPrice": 86.5,
+              "minPrice": 81.7,
+              "maxPrice": 121.2,
+              "count": 5
+            }
+          }
         },
         "松山區": {
           "transactionCount": 1330,
@@ -75,7 +687,121 @@
           "pricePerPing": 82.5,
           "avgRent": 30000,
           "rentPerPing": 1320,
-          "grossYield": 1.9
+          "grossYield": 1.9,
+          "streets": {
+            "三民路": {
+              "avgPrice": 102.1,
+              "medianPrice": 103.2,
+              "minPrice": 27.1,
+              "maxPrice": 134.9,
+              "count": 14
+            },
+            "民生東路五段": {
+              "avgPrice": 81.9,
+              "medianPrice": 85.9,
+              "minPrice": 32.2,
+              "maxPrice": 101.1,
+              "count": 15
+            },
+            "南京東路三段": {
+              "avgPrice": 89.1,
+              "medianPrice": 110.7,
+              "minPrice": 31.6,
+              "maxPrice": 125,
+              "count": 3
+            },
+            "敦化南路一段": {
+              "avgPrice": 118.7,
+              "medianPrice": 125.7,
+              "minPrice": 103.4,
+              "maxPrice": 127.2,
+              "count": 3
+            },
+            "復興北路": {
+              "avgPrice": 88.8,
+              "medianPrice": 85.9,
+              "minPrice": 82,
+              "maxPrice": 95.4,
+              "count": 5
+            },
+            "八德路三段": {
+              "avgPrice": 128.5,
+              "medianPrice": 119.9,
+              "minPrice": 87.1,
+              "maxPrice": 173.2,
+              "count": 8
+            },
+            "南京東路四段": {
+              "avgPrice": 87.7,
+              "medianPrice": 81.5,
+              "minPrice": 57.1,
+              "maxPrice": 108.4,
+              "count": 7
+            },
+            "南京東路五段": {
+              "avgPrice": 88.8,
+              "medianPrice": 92.5,
+              "minPrice": 50.9,
+              "maxPrice": 113.2,
+              "count": 16
+            },
+            "民權東路三段": {
+              "avgPrice": 87.1,
+              "medianPrice": 88.3,
+              "minPrice": 73.3,
+              "maxPrice": 99.5,
+              "count": 3
+            },
+            "新東街": {
+              "avgPrice": 74.3,
+              "medianPrice": 75.5,
+              "minPrice": 61.1,
+              "maxPrice": 86.2,
+              "count": 3
+            },
+            "八德路四段": {
+              "avgPrice": 86.7,
+              "medianPrice": 87,
+              "minPrice": 47,
+              "maxPrice": 112.4,
+              "count": 8
+            },
+            "敦化北路": {
+              "avgPrice": 146.1,
+              "medianPrice": 148.5,
+              "minPrice": 86.6,
+              "maxPrice": 218.3,
+              "count": 10
+            },
+            "塔悠路": {
+              "avgPrice": 68.1,
+              "medianPrice": 68.8,
+              "minPrice": 61.5,
+              "maxPrice": 73.9,
+              "count": 3
+            },
+            "健康路": {
+              "avgPrice": 92.9,
+              "medianPrice": 93.2,
+              "minPrice": 85.6,
+              "maxPrice": 99.7,
+              "count": 4
+            },
+            "北寧路": {
+              "avgPrice": 141.5,
+              "medianPrice": 161.4,
+              "minPrice": 83.4,
+              "maxPrice": 168.3,
+              "count": 5
+            },
+            "八德路二段": {
+              "avgPrice": 113.5,
+              "medianPrice": 121.1,
+              "minPrice": 95.7,
+              "maxPrice": 123.8,
+              "count": 3
+            }
+          }
         },
         "萬華區": {
           "transactionCount": 1203,
@@ -300,7 +1026,156 @@
           "pricePerPing": 46.5,
           "avgRent": 18000,
           "rentPerPing": 880,
-          "grossYield": 2.3
+          "grossYield": 2.3,
+          "streets": {
+            "南山路": {
+              "avgPrice": 59,
+              "medianPrice": 54.8,
+              "minPrice": 42.9,
+              "maxPrice": 78,
+              "count": 7
+            },
+            "連城路": {
+              "avgPrice": 46.4,
+              "medianPrice": 44.6,
+              "minPrice": 21.8,
+              "maxPrice": 77,
+              "count": 11
+            },
+            "景平路": {
+              "avgPrice": 60.5,
+              "medianPrice": 62.6,
+              "minPrice": 36.3,
+              "maxPrice": 78.9,
+              "count": 12
+            },
+            "圓通路": {
+              "avgPrice": 44.5,
+              "medianPrice": 39.9,
+              "minPrice": 25.3,
+              "maxPrice": 74.7,
+              "count": 11
+            },
+            "民享街": {
+              "avgPrice": 51.1,
+              "medianPrice": 50,
+              "minPrice": 42.8,
+              "maxPrice": 61.6,
+              "count": 4
+            },
+            "自立路": {
+              "avgPrice": 49.6,
+              "medianPrice": 55.6,
+              "minPrice": 21.1,
+              "maxPrice": 64,
+              "count": 5
+            },
+            "中正路": {
+              "avgPrice": 58.8,
+              "medianPrice": 63.1,
+              "minPrice": 35.3,
+              "maxPrice": 69,
+              "count": 6
+            },
+            "保健路": {
+              "avgPrice": 58.6,
+              "medianPrice": 62.1,
+              "minPrice": 40.3,
+              "maxPrice": 69.8,
+              "count": 4
+            },
+            "興南路一段": {
+              "avgPrice": 42.9,
+              "medianPrice": 44.7,
+              "minPrice": 20.9,
+              "maxPrice": 61.4,
+              "count": 4
+            },
+            "秀朗路三段": {
+              "avgPrice": 51.1,
+              "medianPrice": 53.9,
+              "minPrice": 43.8,
+              "maxPrice": 55.5,
+              "count": 3
+            },
+            "國光街": {
+              "avgPrice": 38.4,
+              "medianPrice": 42.6,
+              "minPrice": 23.2,
+              "maxPrice": 49.6,
+              "count": 3
+            },
+            "安樂路": {
+              "avgPrice": 43.3,
+              "medianPrice": 50,
+              "minPrice": 20.3,
+              "maxPrice": 52.8,
+              "count": 4
+            },
+            "橋和路": {
+              "avgPrice": 60.4,
+              "medianPrice": 59.7,
+              "minPrice": 59.5,
+              "maxPrice": 61.8,
+              "count": 3
+            },
+            "員山路": {
+              "avgPrice": 42,
+              "medianPrice": 48.1,
+              "minPrice": 26.7,
+              "maxPrice": 51.2,
+              "count": 3
+            },
+            "中興街": {
+              "avgPrice": 59.4,
+              "medianPrice": 59.1,
+              "minPrice": 45.9,
+              "maxPrice": 67.7,
+              "count": 7
+            },
+            "中山路二段": {
+              "avgPrice": 42.6,
+              "medianPrice": 38.6,
+              "minPrice": 19.6,
+              "maxPrice": 65.9,
+              "count": 8
+            },
+            "景新街": {
+              "avgPrice": 51.4,
+              "medianPrice": 43.7,
+              "minPrice": 41.2,
+              "maxPrice": 69.2,
+              "count": 3
+            },
+            "中山路三段": {
+              "avgPrice": 60.8,
+              "medianPrice": 66.7,
+              "minPrice": 45.7,
+              "maxPrice": 69.9,
+              "count": 3
+            },
+            "福祥路": {
+              "avgPrice": 59.1,
+              "medianPrice": 60.5,
+              "minPrice": 41.1,
+              "maxPrice": 71.9,
+              "count": 5
+            },
+            "華新街": {
+              "avgPrice": 46.8,
+              "medianPrice": 44.6,
+              "minPrice": 19.7,
+              "maxPrice": 78.2,
+              "count": 4
+            },
+            "大勇街": {
+              "avgPrice": 41.9,
+              "medianPrice": 39.1,
+              "minPrice": 32.5,
+              "maxPrice": 57,
+              "count": 4
+            }
+          }
         },
         "三重區": {
           "transactionCount": 2868,
@@ -309,7 +1184,86 @@
           "pricePerPing": 45.8,
           "avgRent": 17000,
           "rentPerPing": 850,
-          "grossYield": 2.2
+          "grossYield": 2.2,
+          "streets": {
+            "仁義街": {
+              "avgPrice": 54.3,
+              "medianPrice": 52.7,
+              "minPrice": 49.3,
+              "maxPrice": 59.6,
+              "count": 5
+            },
+            "成功路": {
+              "avgPrice": 56.3,
+              "medianPrice": 54.4,
+              "minPrice": 47.4,
+              "maxPrice": 68.9,
+              "count": 4
+            },
+            "三和路四段": {
+              "avgPrice": 50.2,
+              "medianPrice": 50.3,
+              "minPrice": 45,
+              "maxPrice": 55.1,
+              "count": 4
+            },
+            "重新路四段": {
+              "avgPrice": 47.8,
+              "medianPrice": 51.1,
+              "minPrice": 30.8,
+              "maxPrice": 58.3,
+              "count": 4
+            },
+            "捷運路": {
+              "avgPrice": 104.3,
+              "medianPrice": 107.3,
+              "minPrice": 92.4,
+              "maxPrice": 110,
+              "count": 4
+            },
+            "集賢路": {
+              "avgPrice": 57.8,
+              "medianPrice": 55.7,
+              "minPrice": 52.6,
+              "maxPrice": 65.2,
+              "count": 3
+            },
+            "福德南路": {
+              "avgPrice": 67.6,
+              "medianPrice": 67.5,
+              "minPrice": 66.5,
+              "maxPrice": 68.7,
+              "count": 3
+            },
+            "環河南路": {
+              "avgPrice": 56.9,
+              "medianPrice": 56.9,
+              "minPrice": 46.4,
+              "maxPrice": 67.4,
+              "count": 3
+            },
+            "大同北路": {
+              "avgPrice": 50.9,
+              "medianPrice": 56.3,
+              "minPrice": 37.8,
+              "maxPrice": 58.6,
+              "count": 3
+            },
+            "水漾路二段": {
+              "avgPrice": 64.1,
+              "medianPrice": 67,
+              "minPrice": 54.8,
+              "maxPrice": 70.5,
+              "count": 3
+            },
+            "忠孝路三段": {
+              "avgPrice": 53.4,
+              "medianPrice": 66.8,
+              "minPrice": 19.9,
+              "maxPrice": 82.4,
+              "count": 5
+            }
+          }
         },
         "新店區": {
           "transactionCount": 2554,
@@ -318,7 +1272,114 @@
           "pricePerPing": 48.2,
           "avgRent": 18500,
           "rentPerPing": 900,
-          "grossYield": 2.2
+          "grossYield": 2.2,
+          "streets": {
+            "安祥路": {
+              "avgPrice": 20.9,
+              "medianPrice": 20.8,
+              "minPrice": 18.6,
+              "maxPrice": 23.3,
+              "count": 4
+            },
+            "北新路二段": {
+              "avgPrice": 67.1,
+              "medianPrice": 66,
+              "minPrice": 46.2,
+              "maxPrice": 91.3,
+              "count": 5
+            },
+            "中正路": {
+              "avgPrice": 47.9,
+              "medianPrice": 48.4,
+              "minPrice": 41.2,
+              "maxPrice": 53.5,
+              "count": 5
+            },
+            "如意街": {
+              "avgPrice": 29.5,
+              "medianPrice": 28.6,
+              "minPrice": 22,
+              "maxPrice": 38.1,
+              "count": 3
+            },
+            "竹林路": {
+              "avgPrice": 31.1,
+              "medianPrice": 27.9,
+              "minPrice": 27.1,
+              "maxPrice": 38.3,
+              "count": 3
+            },
+            "三民路": {
+              "avgPrice": 52.8,
+              "medianPrice": 42.4,
+              "minPrice": 41.6,
+              "maxPrice": 84.5,
+              "count": 4
+            },
+            "安民街": {
+              "avgPrice": 35.7,
+              "medianPrice": 36.3,
+              "minPrice": 24.3,
+              "maxPrice": 46.6,
+              "count": 3
+            },
+            "永業路": {
+              "avgPrice": 26.5,
+              "medianPrice": 26.6,
+              "minPrice": 25.5,
+              "maxPrice": 27.5,
+              "count": 3
+            },
+            "安康路二段": {
+              "avgPrice": 46.2,
+              "medianPrice": 49.6,
+              "minPrice": 32.5,
+              "maxPrice": 53.3,
+              "count": 4
+            },
+            "達觀路": {
+              "avgPrice": 25.7,
+              "medianPrice": 26.6,
+              "minPrice": 21.3,
+              "maxPrice": 29.3,
+              "count": 3
+            },
+            "中央路": {
+              "avgPrice": 67,
+              "medianPrice": 66.6,
+              "minPrice": 59.4,
+              "maxPrice": 75.1,
+              "count": 3
+            },
+            "溪園路": {
+              "avgPrice": 66.2,
+              "medianPrice": 68,
+              "minPrice": 58.3,
+              "maxPrice": 70.4,
+              "count": 4
+            },
+            "北宜路二段": {
+              "avgPrice": 39.3,
+              "medianPrice": 39.9,
+              "minPrice": 34.8,
+              "maxPrice": 43.1,
+              "count": 3
+            },
+            "寶橋路": {
+              "avgPrice": 67.6,
+              "medianPrice": 69.3,
+              "minPrice": 60.5,
+              "maxPrice": 71.2,
+              "count": 4
+            },
+            "安成街": {
+              "avgPrice": 40.4,
+              "medianPrice": 41.3,
+              "minPrice": 34.9,
+              "maxPrice": 45,
+              "count": 3
+            }
+          }
         },
         "汐止區": {
           "transactionCount": 2366,
@@ -345,7 +1406,156 @@
           "pricePerPing": 52.8,
           "avgRent": 18000,
           "rentPerPing": 920,
-          "grossYield": 2.1
+          "grossYield": 2.1,
+          "streets": {
+            "永平路": {
+              "avgPrice": 75.2,
+              "medianPrice": 73.5,
+              "minPrice": 56.7,
+              "maxPrice": 97.2,
+              "count": 4
+            },
+            "環河西路一段": {
+              "avgPrice": 54.4,
+              "medianPrice": 54.4,
+              "minPrice": 43.8,
+              "maxPrice": 65.1,
+              "count": 3
+            },
+            "中山路一段": {
+              "avgPrice": 77.6,
+              "medianPrice": 84.9,
+              "minPrice": 57,
+              "maxPrice": 89.7,
+              "count": 6
+            },
+            "秀朗路二段": {
+              "avgPrice": 46.8,
+              "medianPrice": 50.3,
+              "minPrice": 25.3,
+              "maxPrice": 58.5,
+              "count": 6
+            },
+            "福和路": {
+              "avgPrice": 53.6,
+              "medianPrice": 46.3,
+              "minPrice": 31.7,
+              "maxPrice": 82.3,
+              "count": 7
+            },
+            "竹林路": {
+              "avgPrice": 67.9,
+              "medianPrice": 68.5,
+              "minPrice": 45.4,
+              "maxPrice": 89,
+              "count": 4
+            },
+            "安樂路": {
+              "avgPrice": 67.9,
+              "medianPrice": 70.5,
+              "minPrice": 52.3,
+              "maxPrice": 74.6,
+              "count": 5
+            },
+            "民族街": {
+              "avgPrice": 46.1,
+              "medianPrice": 46.3,
+              "minPrice": 45.1,
+              "maxPrice": 46.9,
+              "count": 4
+            },
+            "永貞路": {
+              "avgPrice": 59.2,
+              "medianPrice": 56.5,
+              "minPrice": 16.8,
+              "maxPrice": 107.2,
+              "count": 4
+            },
+            "中和路": {
+              "avgPrice": 59.4,
+              "medianPrice": 63.4,
+              "minPrice": 19.2,
+              "maxPrice": 85.2,
+              "count": 6
+            },
+            "永和路一段": {
+              "avgPrice": 73.6,
+              "medianPrice": 79.1,
+              "minPrice": 50.4,
+              "maxPrice": 85.1,
+              "count": 7
+            },
+            "保平路": {
+              "avgPrice": 39.8,
+              "medianPrice": 39.1,
+              "minPrice": 20.8,
+              "maxPrice": 60.1,
+              "count": 4
+            },
+            "民有街": {
+              "avgPrice": 59.6,
+              "medianPrice": 67.3,
+              "minPrice": 31.3,
+              "maxPrice": 72.5,
+              "count": 4
+            },
+            "環河東路四段": {
+              "avgPrice": 47.9,
+              "medianPrice": 44.5,
+              "minPrice": 43.9,
+              "maxPrice": 55.2,
+              "count": 3
+            },
+            "中正路": {
+              "avgPrice": 64.4,
+              "medianPrice": 65.3,
+              "minPrice": 40.5,
+              "maxPrice": 85.1,
+              "count": 5
+            },
+            "得和路": {
+              "avgPrice": 49,
+              "medianPrice": 50.9,
+              "minPrice": 39.1,
+              "maxPrice": 55,
+              "count": 4
+            },
+            "環河西路二段": {
+              "avgPrice": 57.6,
+              "medianPrice": 56.6,
+              "minPrice": 47.1,
+              "maxPrice": 69.1,
+              "count": 5
+            },
+            "保生路": {
+              "avgPrice": 64.5,
+              "medianPrice": 64.9,
+              "minPrice": 58.6,
+              "maxPrice": 70,
+              "count": 3
+            },
+            "永和路二段": {
+              "avgPrice": 82.8,
+              "medianPrice": 83.5,
+              "minPrice": 74.7,
+              "maxPrice": 89.6,
+              "count": 4
+            },
+            "豫溪街": {
+              "avgPrice": 43.5,
+              "medianPrice": 43.1,
+              "minPrice": 27.5,
+              "maxPrice": 64.5,
+              "count": 5
+            },
+            "成功路一段": {
+              "avgPrice": 40.6,
+              "medianPrice": 39.1,
+              "minPrice": 19.2,
+              "maxPrice": 65.2,
+              "count": 4
+            }
+          }
         },
         "林口區": {
           "transactionCount": 1398,
@@ -363,7 +1573,128 @@
           "pricePerPing": 45.2,
           "avgRent": 16500,
           "rentPerPing": 850,
-          "grossYield": 2.3
+          "grossYield": 2.3,
+          "streets": {
+            "集賢路": {
+              "avgPrice": 54.9,
+              "medianPrice": 58.9,
+              "minPrice": 34.1,
+              "maxPrice": 68.2,
+              "count": 8
+            },
+            "九芎街": {
+              "avgPrice": 48.2,
+              "medianPrice": 42.4,
+              "minPrice": 32.7,
+              "maxPrice": 71,
+              "count": 5
+            },
+            "永平街": {
+              "avgPrice": 44.7,
+              "medianPrice": 41.7,
+              "minPrice": 32.6,
+              "maxPrice": 57,
+              "count": 5
+            },
+            "和平路": {
+              "avgPrice": 40.2,
+              "medianPrice": 43.9,
+              "minPrice": 25.3,
+              "maxPrice": 58.7,
+              "count": 5
+            },
+            "光復路": {
+              "avgPrice": 52.9,
+              "medianPrice": 55.3,
+              "minPrice": 40,
+              "maxPrice": 60.6,
+              "count": 6
+            },
+            "中正路": {
+              "avgPrice": 47.1,
+              "medianPrice": 45.5,
+              "minPrice": 39.6,
+              "maxPrice": 60.4,
+              "count": 5
+            },
+            "民族路": {
+              "avgPrice": 55,
+              "medianPrice": 51.3,
+              "minPrice": 31.6,
+              "maxPrice": 74.3,
+              "count": 13
+            },
+            "長樂路": {
+              "avgPrice": 75.7,
+              "medianPrice": 71.6,
+              "minPrice": 62.6,
+              "maxPrice": 92.7,
+              "count": 3
+            },
+            "仁愛街": {
+              "avgPrice": 48,
+              "medianPrice": 43.7,
+              "minPrice": 37,
+              "maxPrice": 63.4,
+              "count": 3
+            },
+            "忠孝路": {
+              "avgPrice": 57.8,
+              "medianPrice": 57.7,
+              "minPrice": 30.4,
+              "maxPrice": 85.4,
+              "count": 4
+            },
+            "信義路": {
+              "avgPrice": 37.7,
+              "medianPrice": 37.7,
+              "minPrice": 32.6,
+              "maxPrice": 47,
+              "count": 6
+            },
+            "三民路": {
+              "avgPrice": 52.6,
+              "medianPrice": 52.4,
+              "minPrice": 32.6,
+              "maxPrice": 78.8,
+              "count": 6
+            },
+            "光華路": {
+              "avgPrice": 48.4,
+              "medianPrice": 50,
+              "minPrice": 23.1,
+              "maxPrice": 72.9,
+              "count": 8
+            },
+            "長興路": {
+              "avgPrice": 61.5,
+              "medianPrice": 63.5,
+              "minPrice": 50,
+              "maxPrice": 69.2,
+              "count": 4
+            },
+            "長安街": {
+              "avgPrice": 44.5,
+              "medianPrice": 42.9,
+              "minPrice": 34.1,
+              "maxPrice": 63.6,
+              "count": 8
+            },
+            "民義街": {
+              "avgPrice": 40.9,
+              "medianPrice": 39.1,
+              "minPrice": 35.6,
+              "maxPrice": 49.5,
+              "count": 4
+            },
+            "中興街": {
+              "avgPrice": 69.5,
+              "medianPrice": 70.2,
+              "minPrice": 65.2,
+              "maxPrice": 72.6,
+              "count": 4
+            }
+          }
         },
         "樹林區": {
           "transactionCount": 1101,
@@ -713,7 +2044,7 @@
       }
     }
   },
-  "version": "2.0.0",
+  "version": "2.1.0",
   "features": [
     "street-level-pricing"
   ]
