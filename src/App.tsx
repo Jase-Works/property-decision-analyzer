@@ -93,7 +93,7 @@ function App() {
 
   // 取得市場資料
   const handleRefreshMarketData = useCallback(async () => {
-    await fetchMarketData(propertyData, mcpConfigId);
+    await fetchMarketData(propertyData, mcpConfigId, propertyData.address);
   }, [fetchMarketData, propertyData, mcpConfigId]);
 
   // 儲存 MCP Config ID

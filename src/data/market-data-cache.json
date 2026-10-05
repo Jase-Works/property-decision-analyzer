@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T12:00:00Z",
+  "generatedAt": "2026-10-05T14:30:04.073Z",
   "dataSource": "FUNRAISE MCP 實價登錄",
   "transactionYear": 114,
   "cities": {
@@ -30,7 +30,7 @@
           "pricePerPing": 78.2,
           "avgRent": 28000,
           "rentPerPing": 1280,
-          "grossYield": 2.0
+          "grossYield": 2
         },
         "文山區": {
           "transactionCount": 1699,
@@ -133,7 +133,156 @@
           "pricePerPing": 48.8,
           "avgRent": 20000,
           "rentPerPing": 920,
-          "grossYield": 2.3
+          "grossYield": 2.3,
+          "streets": {
+            "華江一路": {
+              "avgPrice": 72.7,
+              "medianPrice": 73.1,
+              "minPrice": 62.6,
+              "maxPrice": 89.8,
+              "count": 10
+            },
+            "民生路三段": {
+              "avgPrice": 67.2,
+              "medianPrice": 69.5,
+              "minPrice": 55.8,
+              "maxPrice": 77.6,
+              "count": 7
+            },
+            "金門街": {
+              "avgPrice": 41.4,
+              "medianPrice": 46.9,
+              "minPrice": 27.5,
+              "maxPrice": 48.6,
+              "count": 6
+            },
+            "文化路一段": {
+              "avgPrice": 59,
+              "medianPrice": 60.3,
+              "minPrice": 35.6,
+              "maxPrice": 90.6,
+              "count": 5
+            },
+            "大觀路二段": {
+              "avgPrice": 39.6,
+              "medianPrice": 38.9,
+              "minPrice": 28.4,
+              "maxPrice": 59.1,
+              "count": 5
+            },
+            "中山路二段": {
+              "avgPrice": 57.1,
+              "medianPrice": 57.9,
+              "minPrice": 50.3,
+              "maxPrice": 63.6,
+              "count": 5
+            },
+            "新府路": {
+              "avgPrice": 115.2,
+              "medianPrice": 122,
+              "minPrice": 86.4,
+              "maxPrice": 124.7,
+              "count": 5
+            },
+            "中正路": {
+              "avgPrice": 46.8,
+              "medianPrice": 46,
+              "minPrice": 31.7,
+              "maxPrice": 69.6,
+              "count": 4
+            },
+            "三民路二段": {
+              "avgPrice": 49,
+              "medianPrice": 55.1,
+              "minPrice": 40.3,
+              "maxPrice": 56.3,
+              "count": 4
+            },
+            "新海路": {
+              "avgPrice": 52.1,
+              "medianPrice": 48.6,
+              "minPrice": 29.8,
+              "maxPrice": 78,
+              "count": 3
+            },
+            "仁化街": {
+              "avgPrice": 52.6,
+              "medianPrice": 43.2,
+              "minPrice": 27.8,
+              "maxPrice": 86.7,
+              "count": 3
+            },
+            "懷德街": {
+              "avgPrice": 48.3,
+              "medianPrice": 47.5,
+              "minPrice": 43.8,
+              "maxPrice": 53.4,
+              "count": 3
+            },
+            "永豐街": {
+              "avgPrice": 25,
+              "medianPrice": 24.4,
+              "minPrice": 24.3,
+              "maxPrice": 26.2,
+              "count": 3
+            },
+            "光環路二段": {
+              "avgPrice": 68.3,
+              "medianPrice": 69.4,
+              "minPrice": 66.1,
+              "maxPrice": 69.5,
+              "count": 3
+            },
+            "四川路二段": {
+              "avgPrice": 44,
+              "medianPrice": 43.5,
+              "minPrice": 42.7,
+              "maxPrice": 45.8,
+              "count": 3
+            },
+            "南雅西路二段": {
+              "avgPrice": 55.7,
+              "medianPrice": 58,
+              "minPrice": 46.1,
+              "maxPrice": 63,
+              "count": 3
+            },
+            "民生路二段": {
+              "avgPrice": 57.9,
+              "medianPrice": 54.7,
+              "minPrice": 49.9,
+              "maxPrice": 69,
+              "count": 3
+            },
+            "國泰街": {
+              "avgPrice": 33,
+              "medianPrice": 32.2,
+              "minPrice": 20.5,
+              "maxPrice": 46.2,
+              "count": 3
+            },
+            "信義路": {
+              "avgPrice": 48.9,
+              "medianPrice": 45.3,
+              "minPrice": 32.8,
+              "maxPrice": 68.6,
+              "count": 3
+            },
+            "民族路": {
+              "avgPrice": 74.9,
+              "medianPrice": 79.9,
+              "minPrice": 60.3,
+              "maxPrice": 84.4,
+              "count": 3
+            },
+            "文化路二段": {
+              "avgPrice": 67.1,
+              "medianPrice": 64.4,
+              "minPrice": 50.4,
+              "maxPrice": 86.5,
+              "count": 3
+            }
+          }
         },
         "新莊區": {
           "transactionCount": 3228,
@@ -371,7 +520,7 @@
           "pricePerPing": 20.5,
           "avgRent": 9500,
           "rentPerPing": 520,
-          "grossYield": 3.0
+          "grossYield": 3
         }
       }
     },
@@ -559,9 +708,13 @@
           "pricePerPing": 22.8,
           "avgRent": 10500,
           "rentPerPing": 580,
-          "grossYield": 3.0
+          "grossYield": 3
         }
       }
     }
-  }
+  },
+  "version": "2.0.0",
+  "features": [
+    "street-level-pricing"
+  ]
 }

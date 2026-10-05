@@ -48,66 +48,87 @@ export function MarketDataPanel({ data, isLoading, error, onRefresh }: MarketDat
       )}
 
       {data && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {/* 區域均價 */}
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-xs text-gray-500 mb-1">區域均價</p>
-            <p className="text-xl font-bold text-gray-900">
-              {data.averagePrice.toFixed(1)}
-              <span className="text-sm font-normal text-gray-500 ml-1">萬/坪</span>
-            </p>
-            <div className="flex items-center gap-1 mt-1">
-              {renderTrend(data.priceYoYChange)}
-              <span className={`text-xs ${getTrendColor(data.priceYoYChange)}`}>
-                {data.priceYoYChange >= 0 ? '+' : ''}{data.priceYoYChange.toFixed(1)}% YoY
-              </span>
+        <div className="space-y-4">
+          {/* 路段資料提示 */}
+          {data.dataLevel === 'street' && data.streetName && (
+            <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+              <p className="text-sm text-green-800 flex items-center gap-2">
+                <span className="text-green-600">📍</span>
+                <span>
+                  使用 <strong>{data.streetName}</strong> 路段行情
+                  {data.priceRange && (
+                    <span className="text-green-600 ml-1">
+                      （{data.priceRange.min}-{data.priceRange.max} 萬/坪）
+                    </span>
+                  )}
+                </span>
+              </p>
             </div>
-          </div>
+          )}
 
-          {/* 租金行情 */}
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-xs text-gray-500 mb-1">租金行情</p>
-            <p className="text-xl font-bold text-gray-900">
-              {data.averageRent.toLocaleString()}
-              <span className="text-sm font-normal text-gray-500 ml-1">元/月</span>
-            </p>
-            {data.rentYoYChange !== undefined && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* 區域/路段均價 */}
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <p className="text-xs text-gray-500 mb-1">
+                {data.dataLevel === 'street' ? '路段均價' : '區域均價'}
+              </p>
+              <p className="text-xl font-bold text-gray-900">
+                {data.averagePrice.toFixed(1)}
+                <span className="text-sm font-normal text-gray-500 ml-1">萬/坪</span>
+              </p>
               <div className="flex items-center gap-1 mt-1">
-                {renderTrend(data.rentYoYChange)}
-                <span className={`text-xs ${getTrendColor(data.rentYoYChange)}`}>
-                  {data.rentYoYChange >= 0 ? '+' : ''}{data.rentYoYChange.toFixed(1)}% YoY
+                {renderTrend(data.priceYoYChange)}
+                <span className={`text-xs ${getTrendColor(data.priceYoYChange)}`}>
+                  {data.priceYoYChange >= 0 ? '+' : ''}{data.priceYoYChange.toFixed(1)}% YoY
                 </span>
               </div>
-            )}
-          </div>
+            </div>
 
-          {/* 成交量 */}
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-xs text-gray-500 mb-1">近期成交量</p>
-            <p className="text-xl font-bold text-gray-900">
-              {data.transactionVolume}
-              <span className="text-sm font-normal text-gray-500 ml-1">筆/月</span>
-            </p>
-            {data.volumeYoYChange !== undefined && (
-              <div className="flex items-center gap-1 mt-1">
-                {renderTrend(data.volumeYoYChange)}
-                <span className={`text-xs ${getTrendColor(data.volumeYoYChange)}`}>
-                  {data.volumeYoYChange >= 0 ? '+' : ''}{data.volumeYoYChange.toFixed(1)}% YoY
-                </span>
-              </div>
-            )}
-          </div>
+            {/* 租金行情 */}
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <p className="text-xs text-gray-500 mb-1">租金行情</p>
+              <p className="text-xl font-bold text-gray-900">
+                {data.averageRent.toLocaleString()}
+                <span className="text-sm font-normal text-gray-500 ml-1">元/月</span>
+              </p>
+              {data.rentYoYChange !== undefined && (
+                <div className="flex items-center gap-1 mt-1">
+                  {renderTrend(data.rentYoYChange)}
+                  <span className={`text-xs ${getTrendColor(data.rentYoYChange)}`}>
+                    {data.rentYoYChange >= 0 ? '+' : ''}{data.rentYoYChange.toFixed(1)}% YoY
+                  </span>
+                </div>
+              )}
+            </div>
 
-          {/* 租金報酬率 */}
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-xs text-gray-500 mb-1">租金報酬率</p>
-            <p className="text-xl font-bold text-gray-900">
-              {data.grossYield.toFixed(2)}
-              <span className="text-sm font-normal text-gray-500 ml-1">%</span>
-            </p>
-            <p className="text-xs text-gray-500 mt-1">
-              毛報酬率
-            </p>
+            {/* 成交量 */}
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <p className="text-xs text-gray-500 mb-1">近期成交量</p>
+              <p className="text-xl font-bold text-gray-900">
+                {data.transactionVolume}
+                <span className="text-sm font-normal text-gray-500 ml-1">筆/月</span>
+              </p>
+              {data.volumeYoYChange !== undefined && (
+                <div className="flex items-center gap-1 mt-1">
+                  {renderTrend(data.volumeYoYChange)}
+                  <span className={`text-xs ${getTrendColor(data.volumeYoYChange)}`}>
+                    {data.volumeYoYChange >= 0 ? '+' : ''}{data.volumeYoYChange.toFixed(1)}% YoY
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* 租金報酬率 */}
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <p className="text-xs text-gray-500 mb-1">租金報酬率</p>
+              <p className="text-xl font-bold text-gray-900">
+                {data.grossYield.toFixed(2)}
+                <span className="text-sm font-normal text-gray-500 ml-1">%</span>
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                毛報酬率
+              </p>
+            </div>
           </div>
         </div>
       )}
@@ -115,7 +136,10 @@ export function MarketDataPanel({ data, isLoading, error, onRefresh }: MarketDat
       {data && (
         <div className="mt-4 pt-4 border-t border-gray-100">
           <p className="text-xs text-gray-500">
-            資料來源：FUNRAISE MCP · 更新時間：{new Date(data.lastUpdated).toLocaleString('zh-TW')}
+            {data.dataSource}
+          </p>
+          <p className="text-xs text-gray-400 mt-0.5">
+            更新時間：{new Date(data.lastUpdated).toLocaleString('zh-TW')}
           </p>
         </div>
       )}

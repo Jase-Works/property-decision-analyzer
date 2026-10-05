@@ -14,6 +14,7 @@ export interface PropertyData {
   propertyType: PropertyType;
   city: string;
   district: string;
+  address?: string;                  // 地址（可選，用於路段行情）
   area: number;                      // 建坪（坪）
   purchasePrice: number;             // 購入總價（萬元）
   purchaseDate: string;              // 購入日期 (YYYY-MM-DD)
@@ -64,7 +65,7 @@ export interface ScenarioData {
 export interface MarketData {
   city: string;
   district: string;
-  averagePrice: number;              // 區域均價（萬/坪）
+  averagePrice: number;              // 區域或路段均價（萬/坪）
   priceYoYChange: number;            // 房價年增率（%）
   averageRent: number;               // 區域平均月租金（元）
   rentYoYChange?: number;            // 租金年增率（%）
@@ -73,6 +74,13 @@ export interface MarketData {
   grossYield: number;                // 毛租金報酬率（%）
   lastUpdated: string;               // 資料更新時間 (ISO string)
   dataSource: string;                // 資料來源
+  // 路段級別資料（如有）
+  streetName?: string;               // 路段名稱
+  priceRange?: {                     // 價格範圍
+    min: number;
+    max: number;
+  };
+  dataLevel?: 'street' | 'district'; // 資料粒度
 }
 
 // ===========================================

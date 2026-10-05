@@ -11,9 +11,17 @@ interface UseMarketDataReturn {
   marketData: MarketData | null;
   isLoading: boolean;
   error: string | null;
-  fetchData: (property: PropertyData, mcpConfigId: string) => Promise<void>;
+  fetchData: (property: PropertyData, mcpConfigId: string, address?: string) => Promise<void>;
   setManualData: (data: MarketData) => void;
   clearData: () => void;
+}
+
+interface StreetData {
+  avgPrice: number;      // 萬/坪
+  medianPrice: number;   // 萬/坪
+  minPrice: number;      // 萬/坪
+  maxPrice: number;      // 萬/坪
+  count: number;         // 成交筆數
 }
 
 interface CachedDistrictData {
@@ -24,12 +32,17 @@ interface CachedDistrictData {
   avgRent: number;
   rentPerPing: number;
   grossYield: number;
+  streets?: {            // 路段資料（如有）
+    [street: string]: StreetData;
+  };
 }
 
 interface CacheStructure {
   generatedAt: string;
   dataSource: string;
   transactionYear: number;
+  version?: string;
+  features?: string[];
   cities: {
     [city: string]: {
       districts: {
@@ -42,9 +55,30 @@ interface CacheStructure {
 const cache = marketDataCache as CacheStructure;
 
 /**
- * 從快取中取得市場資料
+ * 從地址中提取路段名稱
  */
-function getMarketDataFromCache(city: string, district: string, area: number): MarketData | null {
+function extractStreetFromAddress(address: string, district: string): string | null {
+  if (!address || !address.includes(district)) return null;
+  
+  // 移除縣市區前綴
+  const prefixPattern = new RegExp(`.*${district}`);
+  const afterDistrict = address.replace(prefixPattern, '');
+  
+  // 匹配路段名（支援「路N段」「街」「大道N段」格式）
+  const match = afterDistrict.match(/^([^\d巷弄號]+(?:路|街|大道)(?:[一二三四五六七八九十]+段)?)/);
+  return match ? match[1] : null;
+}
+
+/**
+ * 從快取中取得市場資料
+ * 如果有地址且該路段有資料，優先使用路段行情
+ */
+function getMarketDataFromCache(
+  city: string, 
+  district: string, 
+  area: number,
+  address?: string
+): MarketData | null {
   // 處理台/臺轉換
   const normalizedCity = city.replace('臺', '台');
   
@@ -58,13 +92,35 @@ function getMarketDataFromCache(city: string, district: string, area: number): M
     return null;
   }
 
+  // 嘗試取得路段資料
+  let streetData: StreetData | null = null;
+  let streetName: string | null = null;
+  
+  if (address && districtData.streets) {
+    streetName = extractStreetFromAddress(address, district);
+    if (streetName && districtData.streets[streetName]) {
+      streetData = districtData.streets[streetName];
+    }
+  }
+
+  // 決定使用路段或區域均價
+  const pricePerPing = streetData ? streetData.avgPrice : districtData.pricePerPing;
+  const priceSource = streetData 
+    ? `${streetName} 路段行情（${streetData.count} 筆成交）`
+    : `${district} 區域均價`;
+
   // 計算該物件的預估租金（基於坪數和每坪租金）
   const estimatedRent = Math.round(districtData.rentPerPing * area);
+
+  // 計算價格範圍（如有路段資料）
+  const priceRange = streetData 
+    ? { min: streetData.minPrice, max: streetData.maxPrice }
+    : undefined;
 
   return {
     city: normalizedCity,
     district: district,
-    averagePrice: districtData.pricePerPing,
+    averagePrice: pricePerPing,
     priceYoYChange: 2.5, // 預設年增率（可從歷史資料計算）
     averageRent: estimatedRent,
     rentYoYChange: 1.5, // 預設年增率
@@ -72,7 +128,11 @@ function getMarketDataFromCache(city: string, district: string, area: number): M
     volumeYoYChange: 5.0,
     grossYield: districtData.grossYield,
     lastUpdated: cache.generatedAt,
-    dataSource: `${cache.dataSource}（民國 ${cache.transactionYear} 年成交資料）`,
+    dataSource: `${cache.dataSource}（民國 ${cache.transactionYear} 年）- ${priceSource}`,
+    // 擴展欄位
+    streetName: streetName || undefined,
+    priceRange,
+    dataLevel: streetData ? 'street' : 'district',
   };
 }
 
@@ -128,7 +188,7 @@ export function useMarketData(): UseMarketDataReturn {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = useCallback(async (property: PropertyData, _mcpConfigId: string) => {
+  const fetchData = useCallback(async (property: PropertyData, _mcpConfigId: string, address?: string) => {
     // 驗證輸入
     if (!property.city || !property.district) {
       setError('請先選擇縣市和區域');
@@ -142,16 +202,25 @@ export function useMarketData(): UseMarketDataReturn {
       // 模擬網路延遲，讓使用者知道有在處理
       await new Promise((resolve) => setTimeout(resolve, 300));
 
-      // 優先從快取取得資料
+      // 優先從快取取得資料（包含路段資料）
       const cachedData = getMarketDataFromCache(
         property.city,
         property.district,
-        property.area || 30 // 預設 30 坪
+        property.area || 30, // 預設 30 坪
+        address
       );
 
       if (cachedData) {
         setMarketData(cachedData);
-        setError(null);
+        // 如果有路段資料，顯示提示
+        if (cachedData.dataLevel === 'street' && cachedData.streetName) {
+          setError(null);
+        } else if (address && cachedData.dataLevel === 'district') {
+          // 有地址但沒有路段資料
+          setError(`${cachedData.district} 尚無「${extractStreetFromAddress(address, property.district) || '該路段'}」的詳細行情，使用區域均價。`);
+        } else {
+          setError(null);
+        }
       } else {
         // 快取中沒有，使用推估資料
         const fallbackData = generateFallbackMarketData(property);

@@ -77,26 +77,32 @@ export function PropertyForm({ data, onChange }: PropertyFormProps) {
     if (address.length >= 5) {
       const { city, district } = parseAddressLocation(address);
       if (city && district) {
-        onChange({ ...data, city, district });
+        onChange({ ...data, city, district, address });
         setAddressParsed(true);
       } else if (city) {
-        onChange({ ...data, city, district: '' });
+        onChange({ ...data, city, district: '', address });
         setAddressParsed(false);
+      } else {
+        onChange({ ...data, address });
       }
+    } else {
+      onChange({ ...data, address });
     }
   }, [data, onChange]);
 
   const handleAddressBlur = useCallback(() => {
-    // 當失去焦點時，再次嘗試解析
+    // 當失去焦點時，再次嘗試解析並儲存完整地址
     if (addressInput.length >= 5) {
       const { city, district } = parseAddressLocation(addressInput);
       if (city) {
-        const newData = { ...data, city };
+        const newData = { ...data, city, address: addressInput };
         if (district) {
           newData.district = district;
           setAddressParsed(true);
         }
         onChange(newData);
+      } else {
+        onChange({ ...data, address: addressInput });
       }
     }
   }, [addressInput, data, onChange]);
