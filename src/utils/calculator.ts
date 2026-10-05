@@ -166,14 +166,12 @@ export function calculateSellNow(
   scenario: ScenarioData,
   marketData: MarketData | null
 ): SellNowResult {
-  // 預估售價（使用市場均價或購入價加成）
-  let estimatedSellingPrice: number;
-  if (marketData && marketData.averagePrice > 0) {
-    estimatedSellingPrice = marketData.averagePrice * property.area;
-  } else {
-    // 沒有市場資料時，假設持平
-    estimatedSellingPrice = property.purchasePrice;
-  }
+  // 預估售價（使用市場均價或購入價，並考慮持有期間的房價成長）
+  const basePrice = (marketData && marketData.averagePrice > 0)
+    ? marketData.averagePrice * property.area
+    : property.purchasePrice;
+  // 根據情境假設的持有年數和房價年增率計算預估售價
+  const estimatedSellingPrice = basePrice * Math.pow(1 + scenario.priceGrowthRate / 100, scenario.holdingPeriodYears);
   
   // 交易成本
   const transactionCosts = calculateTransactionCosts(estimatedSellingPrice);

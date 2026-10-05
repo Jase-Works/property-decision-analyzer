@@ -3,7 +3,7 @@
  * 幫助使用者分析「現在出售」vs「持有出租」哪個更划算
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Home, Calculator, Settings, Info } from 'lucide-react';
 import { PropertyForm } from './components/forms/PropertyForm';
 import { FinancialForm } from './components/forms/FinancialForm';
@@ -102,6 +102,13 @@ function App() {
     setMcpConfigId(configId);
     localStorage.setItem('funraise_mcp_config_id', configId);
   };
+
+  // 自動取得市場資料：當縣市區域或地址變更時
+  useEffect(() => {
+    if (propertyData.city && propertyData.district) {
+      fetchMarketData(propertyData, mcpConfigId, propertyData.address);
+    }
+  }, [propertyData.city, propertyData.district, propertyData.address, propertyData.area, fetchMarketData, mcpConfigId]);
 
   // 檢查是否可以計算
   const canCalculate = 
