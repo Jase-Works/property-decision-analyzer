@@ -1,10 +1,11 @@
 /**
  * PropertyForm - 房產基本資料輸入表單
  * 讓使用者輸入房產的基本資訊：類型、地點、面積、購入價格等
- * 支援地址輸入自動解析縣市區域
+ * 支援地址輸入自動解析縣市區域、智慧預設值與進階設定摺疊
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import type { PropertyData } from '../../types';
 import { TAIWAN_CITIES, getDistrictsByCity } from '../../data/taiwan-cities';
 
@@ -59,8 +60,25 @@ function parseAddressLocation(address: string): {
 export function PropertyForm({ data, onChange }: PropertyFormProps) {
   const [addressInput, setAddressInput] = useState('');
   const [addressParsed, setAddressParsed] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
   
   const districts = getDistrictsByCity(data.city);
+
+  // 初始化時設定預設值
+  useEffect(() => {
+    // 預設房產類型為中古屋
+    if (!data.propertyType) {
+      onChange({ ...data, propertyType: 'existing' });
+    }
+  }, []);
+
+  // 當房產類型變更時，自動設定屋齡預設值
+  useEffect(() => {
+    if (data.propertyType !== 'presale' && (!data.buildingAge || data.buildingAge === 0)) {
+      // 非預售屋預設屋齡 15 年
+      onChange({ ...data, buildingAge: 15 });
+    }
+  }, [data.propertyType]);
 
   const handleChange = (field: keyof PropertyData, value: string | number) => {
     onChange({ ...data, [field]: value });
@@ -140,23 +158,6 @@ export function PropertyForm({ data, onChange }: PropertyFormProps) {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* 房產類型 */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            房產類型 <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={data.propertyType}
-            onChange={(e) => handleChange('propertyType', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="presale">預售屋</option>
-            <option value="new">新成屋</option>
-            <option value="existing">中古屋</option>
-            <option value="old">老屋</option>
-          </select>
-        </div>
-
         {/* 縣市 */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -244,36 +245,81 @@ export function PropertyForm({ data, onChange }: PropertyFormProps) {
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
+      </div>
 
-        {/* 預計交屋日期（僅預售屋顯示） */}
-        {data.propertyType === 'presale' && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              預計交屋日期
-            </label>
-            <input
-              type="date"
-              value={data.expectedDeliveryDate || ''}
-              onChange={(e) => handleChange('expectedDeliveryDate', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-        )}
+      {/* 進階設定（可摺疊） */}
+      <div className="mt-6 border-t pt-4">
+        <button
+          type="button"
+          onClick={() => setShowAdvanced(!showAdvanced)}
+          className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          {showAdvanced ? (
+            <ChevronDown className="w-4 h-4" />
+          ) : (
+            <ChevronRight className="w-4 h-4" />
+          )}
+          進階設定
+        </button>
 
-        {/* 屋齡（非預售屋顯示） */}
-        {data.propertyType !== 'presale' && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              屋齡（年）
-            </label>
-            <input
-              type="number"
-              value={data.buildingAge || ''}
-              onChange={(e) => handleChange('buildingAge', parseInt(e.target.value) || 0)}
-              placeholder="例如：5"
-              min="0"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            />
+        {showAdvanced && (
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* 房產類型 */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  房產類型
+                </label>
+                <select
+                  value={data.propertyType}
+                  onChange={(e) => handleChange('propertyType', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  <option value="presale">預售屋</option>
+                  <option value="new">新成屋</option>
+                  <option value="existing">中古屋</option>
+                  <option value="old">老屋</option>
+                </select>
+                <p className="text-xs text-gray-500 mt-1">
+                  預設為中古屋
+                </p>
+              </div>
+
+              {/* 屋齡（非預售屋顯示） */}
+              {data.propertyType !== 'presale' && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    屋齡（年）
+                  </label>
+                  <input
+                    type="number"
+                    value={data.buildingAge || ''}
+                    onChange={(e) => handleChange('buildingAge', parseInt(e.target.value) || 0)}
+                    placeholder="預設 15 年"
+                    min="0"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    預設 15 年
+                  </p>
+                </div>
+              )}
+
+              {/* 預計交屋日期（僅預售屋顯示） */}
+              {data.propertyType === 'presale' && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    預計交屋日期
+                  </label>
+                  <input
+                    type="date"
+                    value={data.expectedDeliveryDate || ''}
+                    onChange={(e) => handleChange('expectedDeliveryDate', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

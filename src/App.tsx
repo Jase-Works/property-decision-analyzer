@@ -23,14 +23,14 @@ import { calculateAnalysis } from './utils/calculator';
 
 // 預設值
 const defaultPropertyData: PropertyData = {
-  propertyType: 'presale',
+  propertyType: 'existing', // 預設中古屋
   city: '',
   district: '',
   area: 0,
   purchasePrice: 0,
   purchaseDate: '',
   expectedDeliveryDate: '',
-  buildingAge: 0,
+  buildingAge: 15, // 預設屋齡 15 年
 };
 
 const defaultFinancialData: FinancialData = {
@@ -163,6 +163,8 @@ function App() {
             <FinancialForm
               data={financialData}
               onChange={setFinancialData}
+              propertyData={propertyData}
+              marketData={marketData}
             />
 
             <ScenarioForm
