@@ -12,11 +12,11 @@ import { MarketDataPanel } from './components/results/MarketDataPanel';
 import { ResultsPanel } from './components/results/ResultsPanel';
 import { ComparisonChart } from './components/charts/ComparisonChart';
 import { McpConfigDialog } from './components/McpConfigDialog';
+import { useMarketData } from './hooks/useMarketData';
 import type {
   PropertyData,
   FinancialData,
   ScenarioData,
-  MarketData,
   AnalysisResult,
 } from './types';
 import { calculateAnalysis } from './utils/calculator';
@@ -58,14 +58,19 @@ function App() {
   const [propertyData, setPropertyData] = useState<PropertyData>(defaultPropertyData);
   const [financialData, setFinancialData] = useState<FinancialData>(defaultFinancialData);
   const [scenarioData, setScenarioData] = useState<ScenarioData>(defaultScenarioData);
-  const [marketData, setMarketData] = useState<MarketData | null>(null);
-  const [marketDataLoading, setMarketDataLoading] = useState(false);
-  const [marketDataError, setMarketDataError] = useState<string | null>(null);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [showMcpConfig, setShowMcpConfig] = useState(false);
   const [mcpConfigId, setMcpConfigId] = useState(() => 
     localStorage.getItem('funraise_mcp_config_id') || ''
   );
+
+  // 使用市場資料 Hook
+  const { 
+    marketData, 
+    isLoading: marketDataLoading, 
+    error: marketDataError, 
+    fetchData: fetchMarketData 
+  } = useMarketData();
 
   // 執行分析計算
   const handleCalculate = useCallback(() => {
@@ -84,43 +89,10 @@ function App() {
     setResult(analysisResult);
   }, [propertyData, financialData, scenarioData, marketData]);
 
-  // 取得市場資料（模擬，未來接 MCP）
+  // 取得市場資料
   const handleRefreshMarketData = useCallback(async () => {
-    if (!propertyData.city || !propertyData.district) {
-      setMarketDataError('請先選擇縣市和區域');
-      return;
-    }
-
-    setMarketDataLoading(true);
-    setMarketDataError(null);
-
-    try {
-      // TODO: 實際接 FUNRAISE MCP
-      // 目前使用模擬資料
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // 模擬市場資料
-      const mockMarketData: MarketData = {
-        city: propertyData.city,
-        district: propertyData.district,
-        averagePrice: propertyData.purchasePrice / propertyData.area * (1 + Math.random() * 0.1 - 0.05),
-        priceYoYChange: Math.random() * 10 - 3, // -3% ~ 7%
-        averageRent: propertyData.area * 800 + Math.random() * 5000,
-        rentYoYChange: Math.random() * 5 - 1, // -1% ~ 4%
-        transactionVolume: Math.floor(Math.random() * 100 + 20),
-        volumeYoYChange: Math.random() * 20 - 10,
-        grossYield: 2 + Math.random() * 2, // 2% ~ 4%
-        lastUpdated: new Date().toISOString(),
-        dataSource: 'mock',
-      };
-
-      setMarketData(mockMarketData);
-    } catch (error) {
-      setMarketDataError(error instanceof Error ? error.message : '無法取得市場資料');
-    } finally {
-      setMarketDataLoading(false);
-    }
-  }, [propertyData.city, propertyData.district, propertyData.purchasePrice, propertyData.area]);
+    await fetchMarketData(propertyData, mcpConfigId);
+  }, [fetchMarketData, propertyData, mcpConfigId]);
 
   // 儲存 MCP Config ID
   const handleSaveMcpConfigId = (configId: string) => {
