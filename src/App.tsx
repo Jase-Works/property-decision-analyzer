@@ -61,7 +61,9 @@ function App() {
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [showMcpConfig, setShowMcpConfig] = useState(false);
   const [mcpConfigId, setMcpConfigId] = useState(() => 
-    localStorage.getItem('funraise_mcp_config_id') || ''
+    localStorage.getItem('funraise_mcp_config_id') || 
+    import.meta.env.VITE_FUNRAISE_MCP_CONFIG_ID || 
+    ''
   );
 
   // 使用市場資料 Hook
