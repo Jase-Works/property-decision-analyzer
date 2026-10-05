@@ -11,6 +11,7 @@ import { ScenarioForm } from './components/forms/ScenarioForm';
 import { MarketDataPanel } from './components/results/MarketDataPanel';
 import { ResultsPanel } from './components/results/ResultsPanel';
 import { ComparisonChart } from './components/charts/ComparisonChart';
+import { PredictionPanel } from './components/prediction';
 import { McpConfigDialog } from './components/McpConfigDialog';
 import { useMarketData } from './hooks/useMarketData';
 import type {
@@ -210,6 +211,15 @@ function App() {
             <ComparisonChart
               result={result}
               holdingYears={scenarioData.holdingPeriodYears}
+            />
+
+            {/* 房價/租金走勢預測 */}
+            <PredictionPanel
+              city={propertyData.city}
+              district={propertyData.district}
+              marketData={marketData}
+              purchasePrice={propertyData.purchasePrice}
+              propertyArea={propertyData.area}
             />
           </div>
         )}
