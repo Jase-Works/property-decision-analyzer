@@ -18,6 +18,10 @@ export function PropertyForm({ data, onChange }: PropertyFormProps) {
     onChange({ ...data, [field]: value });
   };
 
+  const handleCityChange = (city: string) => {
+    onChange({ ...data, city, district: '' });
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
       <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
@@ -50,10 +54,7 @@ export function PropertyForm({ data, onChange }: PropertyFormProps) {
           </label>
           <select
             value={data.city}
-            onChange={(e) => {
-              handleChange('city', e.target.value);
-              handleChange('district', ''); // 清空區域
-            }}
+            onChange={(e) => handleCityChange(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">請選擇縣市</option>
