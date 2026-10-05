@@ -1,0 +1,57 @@
+{
+  "大安區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLlj7DljJfluIJcXFwiLFxcXCLoh7rljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLlpKflronljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODYwNjA4MDAwMDAsIlJQUE5NTE1KUkhMR0ZGQTE4RUEiXSwibiI6NTB9",
+    "total": 1693,
+    "count": 50
+  },
+  "信義區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLlj7DljJfluIJcXFwiLFxcXCLoh7rljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLkv6HnvqnljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODUxMTA0MDAwMDAsIlJQT1FNTFJLUUhMR0ZEQTU4REEiXSwibiI6NTB9",
+    "total": 1163,
+    "count": 50
+  },
+  "中山區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLlj7DljJfluIJcXFwiLFxcXCLoh7rljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLkuK3lsbHljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODU1NDI0MDAwMDAsIlJQUU9NTFRKUEhMR0ZDQTU4RUEiXSwibiI6NTB9",
+    "total": 1729,
+    "count": 50
+  },
+  "松山區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLlj7DljJfluIJcXFwiLFxcXCLoh7rljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLmnb7lsbHljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODUxMTA0MDAwMDAsIlJQUU9NTE5LUUhMR0ZEQTI4RUEiXSwibiI6NTB9",
+    "total": 1057,
+    "count": 50
+  },
+  "內湖區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLlj7DljJfluIJcXFwiLFxcXCLoh7rljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLlhafmuZbljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODU0NTYwMDAwMDAsIlJQV09NTFFLUEhMR0ZDQTg4REEiXSwibiI6NTB9",
+    "total": 1495,
+    "count": 50
+  },
+  "士林區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLlj7DljJfluIJcXFwiLFxcXCLoh7rljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLlo6vmnpfljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODUzNjk2MDAwMDAsIlJQVE5NTFFLUEhMR0ZFQTY4REEiXSwibiI6NTB9",
+    "total": 1272,
+    "count": 50
+  },
+  "中和區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLmlrDljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLkuK3lkozljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODU2Mjg4MDAwMDAsIlJQVE9NTExLUUhMR0ZIRjU2REEiXSwibiI6NTB9",
+    "total": 2333,
+    "count": 50
+  },
+  "永和區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLmlrDljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLmsLjlkozljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODQ2Nzg0MDAwMDAsIlJQUk5NTEtNUEhMR0ZIRjg4REEiXSwibiI6NTB9",
+    "total": 1198,
+    "count": 50
+  },
+  "新店區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLmlrDljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLmlrDlupfljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODUzNjk2MDAwMDAsIlJQUk5NTEtMUUhMR0ZDRjM4REEiXSwibiI6NTB9",
+    "total": 1896,
+    "count": 50
+  },
+  "三重區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLmlrDljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLkuInph43ljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODUxOTY4MDAwMDAsIlJQUE5NTFJKUUhMR0ZHRjU2RUEiXSwibiI6NTB9",
+    "total": 2264,
+    "count": 50
+  },
+  "蘆洲區": {
+    "cursor": "eyJ2IjoxLCJxIjoiW1wicmVhbF9lc3RhdGVfc2FsZVwiLFwiW3tcXFwidHJhbnNhY3Rpb25feWVhcl9tb250aF9kYXlcXFwiOlxcXCJkZXNjXFxcIn0se1xcXCJpZFxcXCI6XFxcImFzY1xcXCJ9XVwiLFwiW1tcXFwiY2l0eVxcXCIsW1xcXCLmlrDljJfluIJcXFwiXV0sW1xcXCJkaXN0cmljdFxcXCIsW1xcXCLomIbmtLLljYBcXFwiXV0sW1xcXCJzaW5jZVxcXCIsXFxcIjF5XFxcIl1dXCJdIiwicyI6WzE3ODQwNzM2MDAwMDAsIlJQV1NNTE9LUUhMR0ZHRjQ3REEiXSwibiI6NTB9",
+    "total": 865,
+    "count": 50
+  }
+}
