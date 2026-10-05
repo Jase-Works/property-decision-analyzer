@@ -1,8 +1,10 @@
 /**
  * PropertyForm - 房產基本資料輸入表單
  * 讓使用者輸入房產的基本資訊：類型、地點、面積、購入價格等
+ * 支援地址輸入自動解析縣市區域
  */
 
+import { useState, useCallback } from 'react';
 import type { PropertyData } from '../../types';
 import { TAIWAN_CITIES, getDistrictsByCity } from '../../data/taiwan-cities';
 
@@ -11,7 +13,53 @@ interface PropertyFormProps {
   onChange: (data: PropertyData) => void;
 }
 
+/**
+ * 從地址解析縣市和區域
+ */
+function parseAddressLocation(address: string): {
+  city: string | null;
+  district: string | null;
+} {
+  // 縣市列表（依長度排序，避免「新北市」被「北市」誤匹配）
+  const cities = [
+    '台北市', '臺北市', '新北市', '桃園市', '台中市', '臺中市',
+    '台南市', '臺南市', '高雄市', '基隆市', '新竹市', '嘉義市',
+    '新竹縣', '苗栗縣', '彰化縣', '南投縣', '雲林縣', '嘉義縣',
+    '屏東縣', '宜蘭縣', '花蓮縣', '台東縣', '臺東縣', '澎湖縣',
+    '金門縣', '連江縣',
+  ].sort((a, b) => b.length - a.length);
+
+  let city: string | null = null;
+  let district: string | null = null;
+
+  // 找縣市
+  for (const c of cities) {
+    if (address.includes(c)) {
+      city = c.replace('臺', '台');
+      break;
+    }
+  }
+
+  // 找區域（縣市後面的「X區」「X鄉」「X鎮」「X市」）
+  if (city) {
+    const normalizedAddress = address.replace('臺', '台');
+    const cityIndex = normalizedAddress.indexOf(city);
+    const afterCity = normalizedAddress.slice(cityIndex + city.length);
+    if (afterCity) {
+      const districtMatch = afterCity.match(/^([^\d路街巷弄號]+[區鄉鎮市])/);
+      if (districtMatch) {
+        district = districtMatch[1];
+      }
+    }
+  }
+
+  return { city, district };
+}
+
 export function PropertyForm({ data, onChange }: PropertyFormProps) {
+  const [addressInput, setAddressInput] = useState('');
+  const [addressParsed, setAddressParsed] = useState(false);
+  
   const districts = getDistrictsByCity(data.city);
 
   const handleChange = (field: keyof PropertyData, value: string | number) => {
@@ -20,7 +68,38 @@ export function PropertyForm({ data, onChange }: PropertyFormProps) {
 
   const handleCityChange = (city: string) => {
     onChange({ ...data, city, district: '' });
+    setAddressParsed(false);
   };
+
+  const handleAddressInput = useCallback((address: string) => {
+    setAddressInput(address);
+    
+    if (address.length >= 5) {
+      const { city, district } = parseAddressLocation(address);
+      if (city && district) {
+        onChange({ ...data, city, district });
+        setAddressParsed(true);
+      } else if (city) {
+        onChange({ ...data, city, district: '' });
+        setAddressParsed(false);
+      }
+    }
+  }, [data, onChange]);
+
+  const handleAddressBlur = useCallback(() => {
+    // 當失去焦點時，再次嘗試解析
+    if (addressInput.length >= 5) {
+      const { city, district } = parseAddressLocation(addressInput);
+      if (city) {
+        const newData = { ...data, city };
+        if (district) {
+          newData.district = district;
+          setAddressParsed(true);
+        }
+        onChange(newData);
+      }
+    }
+  }, [addressInput, data, onChange]);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
@@ -28,6 +107,31 @@ export function PropertyForm({ data, onChange }: PropertyFormProps) {
         <span className="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm font-bold">1</span>
         房產基本資料
       </h2>
+      
+      {/* 地址快速輸入 */}
+      <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
+        <label className="block text-sm font-medium text-blue-700 mb-1">
+          📍 快速輸入：貼上地址自動填入縣市區域
+        </label>
+        <input
+          type="text"
+          value={addressInput}
+          onChange={(e) => handleAddressInput(e.target.value)}
+          onBlur={handleAddressBlur}
+          placeholder="例如：台北市信義區信義路五段7號"
+          className="w-full px-3 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+        />
+        {addressParsed && (
+          <p className="text-xs text-green-600 mt-1 flex items-center gap-1">
+            ✓ 已自動填入：{data.city} {data.district}
+          </p>
+        )}
+        {addressInput && !addressParsed && data.city && (
+          <p className="text-xs text-amber-600 mt-1">
+            ⚠ 僅識別到縣市，請手動選擇區域
+          </p>
+        )}
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* 房產類型 */}
