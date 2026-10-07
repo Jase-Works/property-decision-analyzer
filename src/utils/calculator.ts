@@ -159,24 +159,29 @@ export function calculateEffectiveAnnualRent(
 
 /**
  * 計算「現在出售」情境
+ * 
+ * 語意：「現在出售」= 今天立刻賣
+ * - 預估售價 = 當前市價（basePrice），不套用成長率
+ * - 無再投資報酬（今天賣今天拿錢）
+ * - 總報酬 = 純獲利
  */
 export function calculateSellNow(
   property: PropertyData,
   financial: FinancialData,
-  scenario: ScenarioData,
+  _scenario: ScenarioData, // 「現在出售」不使用情境參數，保留以維持 API 相容性
   marketData: MarketData | null
 ): SellNowResult {
-  // 預估售價（使用市場均價或購入價，並考慮持有期間的房價成長）
+  // 預估售價 = 當前市價（使用市場均價或購入價）
+  // 「現在出售」= 今天賣，預估售價為當前市價，不套用成長率
   const basePrice = (marketData && marketData.averagePrice > 0)
     ? marketData.averagePrice * property.area
     : property.purchasePrice;
-  // 根據情境假設的持有年數和房價年增率計算預估售價
-  const estimatedSellingPrice = basePrice * Math.pow(1 + scenario.priceGrowthRate / 100, scenario.holdingPeriodYears);
+  const estimatedSellingPrice = basePrice;
   
   // 交易成本
   const transactionCosts = calculateTransactionCosts(estimatedSellingPrice);
   
-  // 剩餘貸款
+  // 剩餘貸款（基於從購入到現在的實際持有年數）
   const holdingYears = calculateHoldingYears(property.purchaseDate);
   const remainingLoan = calculateRemainingPrincipal(
     financial.loanAmount,
@@ -199,17 +204,15 @@ export function calculateSellNow(
   // 純獲利 = 淨收入 - 初始投入
   const pureProfit = netProceeds - initialInvestment;
   
-  // 再投資報酬（將淨收入投入替代投資）
-  const reinvestmentReturn = netProceeds * (
-    Math.pow(1 + scenario.alternativeInvestmentReturn / 100, scenario.holdingPeriodYears) - 1
-  );
+  // 「現在出售」無再投資報酬（今天賣今天拿錢）
+  const reinvestmentReturn = 0;
   
-  // 總報酬 = 純獲利 + 再投資報酬（不是 netProceeds + reinvestmentReturn）
-  const totalReturn = pureProfit + reinvestmentReturn;
+  // 「現在出售」總報酬 = 純獲利（無再投資）
+  const totalReturn = pureProfit;
   
-  // 年化報酬率（基於初始投入與最終報酬）
-  const annualizedReturn = initialInvestment > 0
-    ? (Math.pow((initialInvestment + totalReturn) / initialInvestment, 1 / scenario.holdingPeriodYears) - 1) * 100
+  // 年化報酬率：基於從購入到現在的實際持有年數
+  const annualizedReturn = initialInvestment > 0 && holdingYears > 0
+    ? (Math.pow((initialInvestment + totalReturn) / initialInvestment, 1 / holdingYears) - 1) * 100
     : 0;
   
   return {

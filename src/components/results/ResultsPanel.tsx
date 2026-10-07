@@ -93,23 +93,11 @@ export function ResultsPanel({ result, holdingYears }: ResultsPanelProps) {
               <span className="text-gray-600">初始投入（頭期款）</span>
               <span className="font-medium text-red-600">-{formatMoney(sellNow.initialInvestment)} 萬</span>
             </div>
-            <div className="pt-2 border-t border-gray-200">
-              <div className="flex justify-between">
-                <span className="text-gray-900 font-medium">純獲利</span>
-                <span className={`text-lg font-bold ${sellNow.pureProfit >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                  {sellNow.pureProfit >= 0 ? '+' : ''}{formatMoney(sellNow.pureProfit)} 萬
-                </span>
-              </div>
-            </div>
-            <div className="pt-2 flex justify-between">
-              <span className="text-gray-600">再投資報酬（{holdingYears}年）</span>
-              <span className="font-medium text-green-600">+{formatMoney(sellNow.reinvestmentReturn)} 萬</span>
-            </div>
             <div className="pt-3 border-t border-gray-200 bg-gray-50 -mx-6 px-6 py-3 -mb-6 rounded-b-lg">
               <div className="flex justify-between items-center">
-                <span className="text-gray-900 font-medium">總報酬</span>
+                <span className="text-gray-900 font-medium">總報酬（純獲利）</span>
                 <span className={`text-2xl font-bold ${sellNow.totalReturn >= 0 ? 'text-orange-600' : 'text-red-600'}`}>
-                  {sellNow.totalReturn >= 0 ? '' : ''}{formatMoney(sellNow.totalReturn)} 萬
+                  {sellNow.totalReturn >= 0 ? '+' : ''}{formatMoney(sellNow.totalReturn)} 萬
                 </span>
               </div>
               <p className="text-xs text-gray-500 mt-1">
