@@ -356,7 +356,6 @@ export function generateYearlyProjections(
 ): YearlyProjection[] {
   const projections: YearlyProjection[] = [];
   const sellNowBase = calculateSellNow(property, financial, { ...scenario, holdingPeriodYears: 0 }, marketData);
-  const initialInvestment = property.purchasePrice - financial.loanAmount;
   
   for (let year = 0; year <= scenario.holdingPeriodYears; year++) {
     const testScenario = { ...scenario, holdingPeriodYears: year };
@@ -383,7 +382,7 @@ export function generateYearlyProjections(
       projections.push({
         year,
         sellNowCumulative: sellNowTotalReturn, // 用修正後的總報酬
-        holdAndRentCumulative: holdResult.totalReturn + initialInvestment,
+        holdAndRentCumulative: holdResult.totalReturn, // 純報酬（已扣初始投入）
         rentalIncome: holdResult.totalRentalIncome / year,
         holdingCosts: holdResult.totalHoldingCosts / year,
         propertyValue: holdResult.futureSellingPrice,

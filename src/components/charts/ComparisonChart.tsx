@@ -128,36 +128,44 @@ export function ComparisonChart({ result, holdingYears }: ComparisonChartProps) 
 /**
  * 生成圖表數據點
  * 計算每年的累積報酬
+ * 
+ * 語意：圖表顯示「純報酬」（可正可負），與卡片的「總報酬」語意一致
+ * - sellNow 線 = 純獲利 + 再投資報酬
+ * - holdAndRent 線 = totalReturn（已扣除初始投入）
  */
 function generateChartData(result: AnalysisResult, holdingYears: number): ChartDataPoint[] {
   const { sellNow, holdAndRent, yearlyProjections } = result;
   const data: ChartDataPoint[] = [];
 
-  // 第 0 年（當下）
-  data.push({
-    year: 0,
-    sellNow: sellNow.netProceeds, // 現在出售的淨收入
-    holdAndRent: 0, // 持有尚未產生報酬
-  });
-
-  // 如果有詳細的年度預測，使用它
+  // 如果有詳細的年度預測，直接使用它（包含 year 0）
   if (yearlyProjections && yearlyProjections.length > 0) {
-    yearlyProjections.forEach((proj, index) => {
+    yearlyProjections.forEach((proj) => {
       data.push({
-        year: index + 1,
+        year: proj.year,
         sellNow: proj.sellNowCumulative,
         holdAndRent: proj.holdAndRentCumulative,
       });
     });
   } else {
-    // 否則使用線性插值
-    const sellNowYearlyReturn = (sellNow.totalReturn - sellNow.netProceeds) / holdingYears;
+    // 否則使用計算值
+    // 第 0 年：現在出售的純獲利（與卡片一致）
+    data.push({
+      year: 0,
+      sellNow: sellNow.pureProfit, // 純獲利，與卡片的 totalReturn 一致
+      holdAndRent: 0, // 持有尚未產生報酬
+    });
+
+    // 線性插值生成後續年份
     const holdAndRentYearlyReturn = holdAndRent.totalReturn / holdingYears;
 
     for (let year = 1; year <= holdingYears; year++) {
+      // 再投資報酬 = 淨收入 × 複利成長
+      const reinvestmentReturn = sellNow.netProceeds * (
+        Math.pow(1 + (result.sellNow.annualizedReturn / 100) || 0, year) - 1
+      );
       data.push({
         year,
-        sellNow: sellNow.netProceeds + sellNowYearlyReturn * year,
+        sellNow: sellNow.pureProfit + reinvestmentReturn,
         holdAndRent: holdAndRentYearlyReturn * year,
       });
     }
