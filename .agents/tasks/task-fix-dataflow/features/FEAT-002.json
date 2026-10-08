@@ -1,0 +1,30 @@
+{
+  "id": "FEAT-002",
+  "type": "fix",
+  "description": "Use market YoY data as scenario defaults (Issue 3) and clean up unused purchasePrice prop (Issue 4). API returns marketData.priceYoYChange and rentYoYChange but they're unused — use them as smart defaults for scenarioData. Also, purchasePrice is passed to PredictionPanel but never used — either use it meaningfully (show purchase vs current price comparison) or remove it.",
+  "status": "pending",
+  "steps": [
+    "Step 1: In src/App.tsx, add useEffect to update scenarioData defaults when marketData changes. When marketData.priceYoYChange and rentYoYChange are available, set them as default values for scenarioData.priceGrowthRate and rentGrowthRate (only if user hasn't manually changed them).",
+    "Step 2: Add a 'scenarioModified' flag to track if user has manually edited scenario values, preventing auto-update from overwriting user choices.",
+    "Step 3: In ScenarioForm, display the market YoY rates as reference (e.g., '市場歷史: +2.5% YoY') next to the input fields to help users understand what the market data suggests.",
+    "Step 4: In PredictionPanel, use the purchasePrice prop meaningfully: add a 'Purchase vs Current Value' comparison section showing purchasePrice (user input) vs current market estimate (marketData.averagePrice * propertyArea). Calculate gain/loss percentage.",
+    "Step 5: Ensure the new comparison section only displays when both purchasePrice > 0 and marketData is available."
+  ],
+  "acceptance_criteria": [
+    "scenarioData.priceGrowthRate defaults to marketData.priceYoYChange when available and user hasn't modified",
+    "scenarioData.rentGrowthRate defaults to marketData.rentYoYChange when available and user hasn't modified",
+    "ScenarioForm shows market YoY rates as reference next to input fields",
+    "PredictionPanel shows 'Purchase vs Current Value' comparison using purchasePrice prop",
+    "No unused props remain — all passed data is utilized",
+    "TypeScript compiles with 0 errors",
+    "Build succeeds"
+  ],
+  "verification": [
+    "Run `npm run build` — must complete with 0 errors",
+    "Manual test: Load page with city/district selected, verify scenarioData fields auto-populate with market YoY values",
+    "Manual test: Change scenario values manually, then change city/district, verify user values are preserved",
+    "Manual test: Enter purchasePrice in PropertyForm, verify PredictionPanel shows purchase vs current price comparison"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

@@ -227,6 +227,8 @@ function App() {
               marketData={marketData}
               purchasePrice={propertyData.purchasePrice}
               propertyArea={propertyData.area}
+              scenarioData={scenarioData}
+              expectedMonthlyRent={financialData.expectedMonthlyRent}
             />
           </div>
         )}

@@ -1,0 +1,7 @@
+{
+  "task_id": "task-fix-dataflow",
+  "task_description": "Fix 4 data flow issues in Property Decision Analyzer: 1) Rent source inconsistency between analysis and prediction, 2) Scenario assumptions not synced to prediction, 3) Market YoY data unused, 4) purchasePrice prop unused. All fixes must ensure cumulative income figures and curve charts are consistent across analysis and prediction.",
+  "status": "pending",
+  "feature_order": ["FEAT-001", "FEAT-002"],
+  "blocked_reason": null
+}

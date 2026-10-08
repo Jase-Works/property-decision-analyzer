@@ -3,14 +3,14 @@
  * 管理總體經濟假設、情境切換、時間範圍選擇
  */
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import type {
   MacroAssumptions,
   PredefinedScenario,
   PredictionHorizon,
   PredictionResult,
 } from '../types/prediction';
-import type { MarketData } from '../types';
+import type { MarketData, ScenarioData } from '../types';
 import {
   generatePrediction,
   getScenarioAssumptions,
@@ -23,6 +23,8 @@ interface UsePredictionProps {
   currentPricePerPing: number;
   currentMonthlyRent: number;
   propertyArea: number;
+  /** 使用者輸入的情境假設（可選），若提供則會覆蓋成長率 */
+  scenarioData?: ScenarioData;
 }
 
 interface UsePredictionReturn {
@@ -40,6 +42,8 @@ interface UsePredictionReturn {
   error: string | null;
   /** 最新經濟數據（用於顯示） */
   latestEconomicData: ReturnType<typeof getLatestEconomicData>;
+  /** 是否正在使用 scenarioData 的成長率覆蓋 */
+  isUsingScenarioOverrides: boolean;
   /** 切換情境 */
   setScenario: (scenario: PredefinedScenario) => void;
   /** 更新假設 */
@@ -52,14 +56,34 @@ interface UsePredictionReturn {
   recalculate: () => void;
 }
 
+/**
+ * 從 scenarioData 建立包含成長率覆蓋的 MacroAssumptions
+ */
+function createAssumptionsWithOverrides(
+  baseAssumptions: MacroAssumptions,
+  scenarioData?: ScenarioData
+): MacroAssumptions {
+  if (!scenarioData) {
+    return baseAssumptions;
+  }
+  
+  return {
+    ...baseAssumptions,
+    // 使用 scenarioData 的成長率作為覆蓋值
+    priceGrowthRateOverride: scenarioData.priceGrowthRate,
+    rentGrowthRateOverride: scenarioData.rentGrowthRate,
+  };
+}
+
 export function usePrediction(props: UsePredictionProps): UsePredictionReturn {
-  const { city, district, currentPricePerPing, currentMonthlyRent, propertyArea } = props;
+  const { city, district, currentPricePerPing, currentMonthlyRent, propertyArea, scenarioData } = props;
 
   // 狀態
   const [scenario, setScenarioState] = useState<PredefinedScenario>('baseline');
-  const [assumptions, setAssumptions] = useState<MacroAssumptions>(
-    () => getScenarioAssumptions('baseline')
-  );
+  const [assumptions, setAssumptions] = useState<MacroAssumptions>(() => {
+    const baseAssumptions = getScenarioAssumptions('baseline');
+    return createAssumptionsWithOverrides(baseAssumptions, scenarioData);
+  });
   const [horizon, setHorizonState] = useState<PredictionHorizon>(3);
   const [prediction, setPrediction] = useState<PredictionResult | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
@@ -67,6 +91,26 @@ export function usePrediction(props: UsePredictionProps): UsePredictionReturn {
 
   // 取得最新經濟數據
   const latestEconomicData = useMemo(() => getLatestEconomicData(), []);
+
+  // 判斷是否正在使用 scenarioData 的覆蓋值
+  const isUsingScenarioOverrides = useMemo(() => {
+    return !!(
+      scenarioData &&
+      (assumptions.priceGrowthRateOverride !== undefined ||
+        assumptions.rentGrowthRateOverride !== undefined)
+    );
+  }, [scenarioData, assumptions.priceGrowthRateOverride, assumptions.rentGrowthRateOverride]);
+
+  // 當 scenarioData 變更時，同步更新假設中的成長率覆蓋
+  useEffect(() => {
+    if (scenarioData) {
+      setAssumptions(prev => ({
+        ...prev,
+        priceGrowthRateOverride: scenarioData.priceGrowthRate,
+        rentGrowthRateOverride: scenarioData.rentGrowthRate,
+      }));
+    }
+  }, [scenarioData?.priceGrowthRate, scenarioData?.rentGrowthRate]);
 
   // 執行預測計算
   const calculatePrediction = useCallback(() => {
@@ -154,6 +198,7 @@ export function usePrediction(props: UsePredictionProps): UsePredictionReturn {
     isCalculating,
     error,
     latestEconomicData,
+    isUsingScenarioOverrides,
     setScenario,
     updateAssumptions,
     resetAssumptions,

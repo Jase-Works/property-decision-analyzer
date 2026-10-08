@@ -4,12 +4,12 @@
  */
 
 import { useState, useEffect } from 'react';
-import { TrendingUp, ChevronDown, ChevronUp, RefreshCw, Home, Wallet } from 'lucide-react';
+import { TrendingUp, ChevronDown, ChevronUp, RefreshCw, Home, Wallet, User, Database } from 'lucide-react';
 import { PredictionChart } from './PredictionChart';
 import { MacroAssumptionsEditor } from './MacroAssumptionsEditor';
 import { PredictionDisclaimer } from './PredictionDisclaimer';
 import { usePrediction } from '../../hooks/usePrediction';
-import type { MarketData } from '../../types';
+import type { MarketData, ScenarioData } from '../../types';
 import type { PredictionHorizon } from '../../types/prediction';
 
 interface PredictionPanelProps {
@@ -19,6 +19,10 @@ interface PredictionPanelProps {
   /** 購入總價（萬元），未來可用於計算報酬率 */
   purchasePrice?: number;
   propertyArea: number;
+  /** 使用者輸入的情境假設 */
+  scenarioData?: ScenarioData;
+  /** 使用者輸入的預期月租金（元） */
+  expectedMonthlyRent?: number;
 }
 
 export function PredictionPanel({
@@ -27,12 +31,20 @@ export function PredictionPanel({
   marketData,
   // purchasePrice 保留供未來使用
   propertyArea,
+  scenarioData,
+  expectedMonthlyRent,
 }: PredictionPanelProps) {
-  // 從市場資料取得房價和租金
+  // 從市場資料取得房價
   const currentPricePerPing = marketData?.averagePrice || 0;
-  const currentMonthlyRent = marketData?.averageRent || 0;
+  // 租金優先使用使用者輸入（若有且 > 0），否則使用市場行情
+  const marketAverageRent = marketData?.averageRent || 0;
+  const currentMonthlyRent = (expectedMonthlyRent && expectedMonthlyRent > 0) 
+    ? expectedMonthlyRent 
+    : marketAverageRent;
+  // 判斷租金來源
+  const isUsingUserRent = expectedMonthlyRent && expectedMonthlyRent > 0 && expectedMonthlyRent !== marketAverageRent;
 
-  // 使用預測 Hook
+  // 使用預測 Hook（傳入 scenarioData 以同步成長率假設）
   const {
     prediction,
     scenario,
@@ -41,6 +53,7 @@ export function PredictionPanel({
     isCalculating,
     error,
     latestEconomicData,
+    isUsingScenarioOverrides,
     setScenario,
     updateAssumptions,
     resetAssumptions,
@@ -52,6 +65,7 @@ export function PredictionPanel({
     currentPricePerPing,
     currentMonthlyRent,
     propertyArea: propertyArea || 30, // 預設 30 坪
+    scenarioData,
   });
 
   // 展開狀態
@@ -159,6 +173,39 @@ export function PredictionPanel({
                 <Wallet className="w-4 h-4" />
                 租金走勢
               </button>
+            </div>
+
+            {/* 資料來源指示器（租金比較 + 情境假設來源） */}
+            <div className="flex flex-wrap gap-3 text-xs">
+              {/* 租金來源比較 */}
+              <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${
+                isUsingUserRent ? 'bg-amber-50 text-amber-700 border border-amber-200' : 'bg-gray-50 text-gray-600 border border-gray-200'
+              }`}>
+                {isUsingUserRent ? (
+                  <>
+                    <User className="w-3.5 h-3.5" />
+                    <span>租金：使用您輸入的 {expectedMonthlyRent?.toLocaleString()} 元/月</span>
+                    {marketAverageRent > 0 && (
+                      <span className="text-gray-400">（市場行情 {marketAverageRent.toLocaleString()} 元）</span>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <Database className="w-3.5 h-3.5" />
+                    <span>租金：採用市場行情 {marketAverageRent.toLocaleString()} 元/月</span>
+                  </>
+                )}
+              </div>
+              
+              {/* 情境假設來源指示器 */}
+              {isUsingScenarioOverrides && (
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200">
+                  <User className="w-3.5 h-3.5" />
+                  <span>
+                    成長率：房價 {scenarioData?.priceGrowthRate}%/年、租金 {scenarioData?.rentGrowthRate}%/年（您的假設）
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* 預測圖表 */}

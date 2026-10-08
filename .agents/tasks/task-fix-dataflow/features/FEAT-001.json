@@ -1,0 +1,28 @@
+{
+  "id": "FEAT-001",
+  "type": "fix",
+  "description": "Fix rent data source inconsistency (Issue 1) and pass scenarioData to PredictionPanel (Issue 2). Currently, analysis uses financialData.expectedMonthlyRent but PredictionPanel uses marketData.averageRent. Also, user's scenarioData.priceGrowthRate/rentGrowthRate are not passed to prediction — it uses hardcoded assumptions instead.",
+  "status": "completed",
+  "steps": [
+    "Step 1: In src/App.tsx, add scenarioData and financialData as new props to PredictionPanel (lines 192-198). Pass scenarioData={scenarioData} and expectedMonthlyRent={financialData.expectedMonthlyRent}.",
+    "Step 2: Update PredictionPanel interface (src/components/prediction/PredictionPanel.tsx) to accept new props: scenarioData: ScenarioData and expectedMonthlyRent: number.",
+    "Step 3: In PredictionPanel, use expectedMonthlyRent (user input) as the primary rent value for prediction instead of marketData.averageRent. Show both values for comparison: display marketData.averageRent as '市場行情' reference alongside user's expected rent.",
+    "Step 4: In usePrediction hook initialization, use scenarioData.priceGrowthRate and scenarioData.rentGrowthRate as the priceGrowthRateOverride and rentGrowthRateOverride in MacroAssumptions. This syncs user's scenario assumptions to the prediction model.",
+    "Step 5: Add UI indicator in PredictionPanel showing 'Using user scenario assumptions' vs 'Using macro model' when scenario overrides are active."
+  ],
+  "acceptance_criteria": [
+    "PredictionPanel uses expectedMonthlyRent (user input) for rent predictions, not marketData.averageRent",
+    "PredictionPanel displays both user expected rent and market average rent for comparison",
+    "User's scenarioData.priceGrowthRate is applied to prediction calculations (override macro model)",
+    "User's scenarioData.rentGrowthRate is applied to prediction calculations (override macro model)",
+    "TypeScript compiles with 0 errors",
+    "Build succeeds"
+  ],
+  "verification": [
+    "Run `npm run build` — must complete with 0 errors",
+    "Manual test: Enter different values for 'Expected Monthly Rent' in FinancialForm vs market data, verify PredictionPanel uses user input and shows market comparison",
+    "Manual test: Change priceGrowthRate in ScenarioForm, verify prediction chart changes accordingly"
+  ],
+  "blocked_reason": null,
+  "findings": "Implemented successfully. Changes made:\n1. App.tsx: Added scenarioData and expectedMonthlyRent props to PredictionPanel\n2. PredictionPanel.tsx: Added ScenarioData and expectedMonthlyRent to interface, prioritizes user rent over market rent, added rent source indicator (User/Database icon) showing which value is used with comparison, added scenario override indicator when user growth rates are active\n3. usePrediction.ts: Added scenarioData prop, useEffect to sync priceGrowthRate and rentGrowthRate as overrides when scenarioData changes, added isUsingScenarioOverrides to return value\nBuild completed with 0 TypeScript errors."
+}
