@@ -1,0 +1,40 @@
+{
+  "findings": [
+    {
+      "severity": "info",
+      "file": "src/App.tsx",
+      "description": "Added useEffect to sync marketData.priceYoYChange/rentYoYChange to scenarioData defaults. Uses scenarioModified flag to prevent overwriting user choices - this is the correct pattern for smart defaults."
+    },
+    {
+      "severity": "info",
+      "file": "src/components/prediction/PredictionPanel.tsx",
+      "description": "Now properly uses expectedMonthlyRent (user input) with fallback to marketData.averageRent. Clear UI indicators show data source (User vs Database icon)."
+    },
+    {
+      "severity": "info",
+      "file": "src/hooks/usePrediction.ts",
+      "description": "Added scenarioData prop and useEffect to sync priceGrowthRate/rentGrowthRate as overrides. The priceGrowthRateOverride/rentGrowthRateOverride pattern ensures user scenario takes precedence over macro model."
+    },
+    {
+      "severity": "info",
+      "file": "src/components/forms/ScenarioForm.tsx",
+      "description": "Now displays market YoY rates as reference text next to input fields. Helps users understand what market data suggests while allowing manual override."
+    },
+    {
+      "severity": "info",
+      "file": "src/components/prediction/PredictionPanel.tsx",
+      "description": "purchasePrice prop is now meaningfully used - shows 'Purchase vs Current Value' comparison with gain/loss percentage. Only displays when both values are available."
+    },
+    {
+      "severity": "info",
+      "file": "src/utils/calculator.ts",
+      "description": "Calculator changes ensure 'sell now' semantics are correct - uses current market price without growth rate. Added initialInvestment (down payment) and pureProfit fields for clearer accounting."
+    },
+    {
+      "severity": "info",
+      "file": "src/components/charts/ComparisonChart.tsx",
+      "description": "Chart now uses pureProfit for consistency with card totals. Year 0 correctly shows pure profit (no reinvestment yet), subsequent years add reinvestment returns."
+    }
+  ],
+  "summary": "All 4 original data flow issues have been properly addressed: (1) Rent source is now consistent - PredictionPanel uses expectedMonthlyRent with fallback to market data; (2) scenarioData.priceGrowthRate/rentGrowthRate are now synced to prediction via usePrediction hook; (3) Market YoY data is used as smart defaults for scenario assumptions; (4) purchasePrice is now meaningfully used for purchase-vs-current comparison. Build passes with 0 TypeScript errors. Additional fixes for chart/card consistency were also included."
+}
