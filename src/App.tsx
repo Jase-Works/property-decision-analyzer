@@ -59,6 +59,7 @@ function App() {
   const [propertyData, setPropertyData] = useState<PropertyData>(defaultPropertyData);
   const [financialData, setFinancialData] = useState<FinancialData>(defaultFinancialData);
   const [scenarioData, setScenarioData] = useState<ScenarioData>(defaultScenarioData);
+  const [scenarioModified, setScenarioModified] = useState(false); // 追蹤使用者是否手動修改過情境假設
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [showMcpConfig, setShowMcpConfig] = useState(false);
   const [mcpConfigId, setMcpConfigId] = useState(() => 
@@ -74,6 +75,34 @@ function App() {
     error: marketDataError, 
     fetchData: fetchMarketData 
   } = useMarketData();
+
+  // 當市場資料變更時，自動更新情境假設的預設值（僅在使用者未手動修改時）
+  useEffect(() => {
+    if (marketData && !scenarioModified) {
+      const updates: Partial<ScenarioData> = {};
+      
+      // 使用市場的房價年增率作為預設值
+      if (marketData.priceYoYChange !== undefined) {
+        updates.priceGrowthRate = marketData.priceYoYChange;
+      }
+      
+      // 使用市場的租金年增率作為預設值
+      if (marketData.rentYoYChange !== undefined) {
+        updates.rentGrowthRate = marketData.rentYoYChange;
+      }
+      
+      // 只在有更新時才 setState
+      if (Object.keys(updates).length > 0) {
+        setScenarioData(prev => ({ ...prev, ...updates }));
+      }
+    }
+  }, [marketData, scenarioModified]);
+
+  // 包裝 ScenarioForm 的 onChange，追蹤使用者手動修改
+  const handleScenarioChange = useCallback((newScenarioData: ScenarioData) => {
+    setScenarioModified(true); // 標記使用者已手動修改
+    setScenarioData(newScenarioData);
+  }, []);
 
   // 執行分析計算
   const handleCalculate = useCallback(() => {
@@ -177,7 +206,8 @@ function App() {
 
             <ScenarioForm
               data={scenarioData}
-              onChange={setScenarioData}
+              onChange={handleScenarioChange}
+              marketData={marketData}
             />
 
             {/* 計算按鈕 */}

@@ -3,16 +3,24 @@
  * 讓使用者設定市場預測參數和分析期間
  */
 
-import type { ScenarioData } from '../../types';
+import type { ScenarioData, MarketData } from '../../types';
 
 interface ScenarioFormProps {
   data: ScenarioData;
   onChange: (data: ScenarioData) => void;
+  marketData?: MarketData | null;
 }
 
-export function ScenarioForm({ data, onChange }: ScenarioFormProps) {
+export function ScenarioForm({ data, onChange, marketData }: ScenarioFormProps) {
   const handleChange = (field: keyof ScenarioData, value: number) => {
     onChange({ ...data, [field]: value });
+  };
+
+  // 格式化市場 YoY 顯示
+  const formatYoY = (value: number | undefined) => {
+    if (value === undefined) return null;
+    const sign = value >= 0 ? '+' : '';
+    return `${sign}${value.toFixed(1)}%`;
   };
 
   return (
@@ -53,6 +61,11 @@ export function ScenarioForm({ data, onChange }: ScenarioFormProps) {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 房價年增率（%）
+                {marketData?.priceYoYChange !== undefined && (
+                  <span className="ml-2 text-xs font-normal text-blue-600">
+                    市場歷史: {formatYoY(marketData.priceYoYChange)} YoY
+                  </span>
+                )}
               </label>
               <input
                 type="number"
@@ -71,6 +84,11 @@ export function ScenarioForm({ data, onChange }: ScenarioFormProps) {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 租金年增率（%）
+                {marketData?.rentYoYChange !== undefined && (
+                  <span className="ml-2 text-xs font-normal text-green-600">
+                    市場歷史: {formatYoY(marketData.rentYoYChange)} YoY
+                  </span>
+                )}
               </label>
               <input
                 type="number"

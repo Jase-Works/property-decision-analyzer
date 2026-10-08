@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { TrendingUp, ChevronDown, ChevronUp, RefreshCw, Home, Wallet, User, Database } from 'lucide-react';
+import { TrendingUp, ChevronDown, ChevronUp, RefreshCw, Home, Wallet, User, Database, DollarSign, TrendingDown } from 'lucide-react';
 import { PredictionChart } from './PredictionChart';
 import { MacroAssumptionsEditor } from './MacroAssumptionsEditor';
 import { PredictionDisclaimer } from './PredictionDisclaimer';
@@ -29,7 +29,7 @@ export function PredictionPanel({
   city,
   district,
   marketData,
-  // purchasePrice 保留供未來使用
+  purchasePrice,
   propertyArea,
   scenarioData,
   expectedMonthlyRent,
@@ -43,6 +43,15 @@ export function PredictionPanel({
     : marketAverageRent;
   // 判斷租金來源
   const isUsingUserRent = expectedMonthlyRent && expectedMonthlyRent > 0 && expectedMonthlyRent !== marketAverageRent;
+  
+  // 計算購入價格 vs 當前市值比較
+  const currentMarketValue = marketData && propertyArea > 0 
+    ? marketData.averagePrice * propertyArea 
+    : 0;
+  const hasValidPurchaseComparison = purchasePrice && purchasePrice > 0 && currentMarketValue > 0;
+  const purchaseGainLoss = hasValidPurchaseComparison 
+    ? ((currentMarketValue - purchasePrice) / purchasePrice) * 100 
+    : 0;
 
   // 使用預測 Hook（傳入 scenarioData 以同步成長率假設）
   const {
@@ -264,6 +273,67 @@ export function PredictionPanel({
                     目前 {marketData?.grossYield?.toFixed(2) || '-'}%
                   </p>
                 </div>
+              </div>
+            )}
+
+            {/* 購入價格 vs 當前市值比較 */}
+            {hasValidPurchaseComparison && (
+              <div className={`rounded-lg p-4 border ${
+                purchaseGainLoss >= 0 
+                  ? 'bg-emerald-50 border-emerald-200' 
+                  : 'bg-red-50 border-red-200'
+              }`}>
+                <div className="flex items-center gap-2 mb-3">
+                  <DollarSign className={`w-5 h-5 ${purchaseGainLoss >= 0 ? 'text-emerald-600' : 'text-red-600'}`} />
+                  <h4 className={`font-medium ${purchaseGainLoss >= 0 ? 'text-emerald-700' : 'text-red-700'}`}>
+                    購入價格 vs 當前市值
+                  </h4>
+                </div>
+                <div className="grid grid-cols-3 gap-4">
+                  {/* 購入價格 */}
+                  <div className="text-center">
+                    <p className="text-xs text-gray-500 mb-1">您的購入價格</p>
+                    <p className="text-lg font-semibold text-gray-800">
+                      {purchasePrice?.toLocaleString()} 萬
+                    </p>
+                  </div>
+                  
+                  {/* 當前市值 */}
+                  <div className="text-center">
+                    <p className="text-xs text-gray-500 mb-1">
+                      當前市值估算
+                      <span className="block text-[10px]">
+                        ({marketData?.averagePrice?.toLocaleString()} 萬/坪 × {propertyArea} 坪)
+                      </span>
+                    </p>
+                    <p className="text-lg font-semibold text-gray-800">
+                      {currentMarketValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} 萬
+                    </p>
+                  </div>
+                  
+                  {/* 漲跌幅 */}
+                  <div className="text-center">
+                    <p className="text-xs text-gray-500 mb-1">漲跌幅</p>
+                    <div className={`flex items-center justify-center gap-1 text-lg font-bold ${
+                      purchaseGainLoss >= 0 ? 'text-emerald-600' : 'text-red-600'
+                    }`}>
+                      {purchaseGainLoss >= 0 ? (
+                        <TrendingUp className="w-4 h-4" />
+                      ) : (
+                        <TrendingDown className="w-4 h-4" />
+                      )}
+                      <span>
+                        {purchaseGainLoss >= 0 ? '+' : ''}{purchaseGainLoss.toFixed(1)}%
+                      </span>
+                    </div>
+                    <p className={`text-xs ${purchaseGainLoss >= 0 ? 'text-emerald-500' : 'text-red-500'}`}>
+                      {purchaseGainLoss >= 0 ? '帳面獲利' : '帳面虧損'} {Math.abs(currentMarketValue - (purchasePrice || 0)).toLocaleString(undefined, { maximumFractionDigits: 0 })} 萬
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 mt-3 text-center">
+                  * 市值估算依區域均價計算，實際價值可能因屋況、樓層等因素有所差異
+                </p>
               </div>
             )}
 

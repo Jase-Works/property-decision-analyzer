@@ -2,7 +2,7 @@
   "id": "FEAT-002",
   "type": "fix",
   "description": "Use market YoY data as scenario defaults (Issue 3) and clean up unused purchasePrice prop (Issue 4). API returns marketData.priceYoYChange and rentYoYChange but they're unused — use them as smart defaults for scenarioData. Also, purchasePrice is passed to PredictionPanel but never used — either use it meaningfully (show purchase vs current price comparison) or remove it.",
-  "status": "pending",
+  "status": "completed",
   "steps": [
     "Step 1: In src/App.tsx, add useEffect to update scenarioData defaults when marketData changes. When marketData.priceYoYChange and rentYoYChange are available, set them as default values for scenarioData.priceGrowthRate and rentGrowthRate (only if user hasn't manually changed them).",
     "Step 2: Add a 'scenarioModified' flag to track if user has manually edited scenario values, preventing auto-update from overwriting user choices.",
@@ -26,5 +26,5 @@
     "Manual test: Enter purchasePrice in PropertyForm, verify PredictionPanel shows purchase vs current price comparison"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "Implemented successfully. Changes made:\n1. App.tsx: Added scenarioModified state to track user manual edits, added useEffect to sync marketData.priceYoYChange/rentYoYChange to scenarioData defaults (only when !scenarioModified), created handleScenarioChange wrapper that sets scenarioModified=true, passed marketData to ScenarioForm\n2. ScenarioForm.tsx: Updated interface to accept marketData?: MarketData | null, added formatYoY helper function, displays market YoY rates as reference text (blue for price, green for rent) next to priceGrowthRate and rentGrowthRate inputs\n3. PredictionPanel.tsx: Now uses purchasePrice prop meaningfully - calculates currentMarketValue (marketData.averagePrice * propertyArea), computes gain/loss percentage, displays 'Purchase vs Current Value' comparison section with purchase price, current market estimate, and gain/loss percentage with visual indicators (green for gain, red for loss). Section only displays when purchasePrice > 0 AND marketData is available.\nBuild completed with 0 TypeScript errors."
 }
